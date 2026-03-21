@@ -1,0 +1,100 @@
+{
+  "common": {
+    "appName": "ATS Mobile",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "close": "Cerrar",
+    "viewAll": "Ver todo",
+    "today": "Hoy",
+    "language": "Idioma",
+    "spanish": "Español",
+    "english": "Inglés",
+    "selectLanguage": "Seleccionar idioma"
+  },
+  "welcome": {
+    "greeting": "¡Bienvenido de vuelta!",
+    "hello": "Hola",
+    "searchPlaceholder": "Buscar vacantes...",
+    "activeJobs": "Empleos Activos",
+    "applicants": "Aplicantes",
+    "hired": "Contratados",
+    "thisMonth": "Este mes",
+    "activeJobOpenings": "Vacantes Activas",
+    "newApplicants": "nuevos hoy",
+    "scheduled": "programados",
+    "justPosted": "Recién publicado",
+    "notifications": "Notificaciones"
+  },
+  "jobStatus": {
+    "active": "ACTIVO",
+    "interviewing": "ENTREVISTANDO",
+    "new": "NUEVO",
+    "closed": "CERRADO",
+    "paused": "PAUSADO",
+    "draft": "BORRADOR"
+  },
+  "tabs": {
+    "dashboard": "Inicio",
+    "applicants": "Aplicantes",
+    "calendar": "Calendario",
+    "profile": "Perfil"
+  },
+  "profile": {
+    "title": "Mi Perfil",
+    "role": "Cargo",
+    "department": "Departamento",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión",
+    "changeLanguage": "Cambiar idioma",
+    "notifications": "Notificaciones",
+    "about": "Acerca de"
+  },
+  "applicants": {
+    "title": "Aplicantes",
+    "total": "Total aplicantes",
+    "new": "Nuevos",
+    "screening": "En revisión",
+    "interviewing": "Entrevistando",
+    "hired": "Contratados",
+    "rejected": "Rechazados"
+  },
+  "jobs": {
+    "title": "Vacantes",
+    "location": "Ubicación",
+    "department": "Departamento",
+    "type": "Tipo",
+    "postedDate": "Publicado",
+    "closingDate": "Cierre",
+    "applicantsCount": "Aplicantes"
+  },
+  "errors": {
+    "networkError": "Error de conexión. Verifica tu internet.",
+    "sessionExpired": "Tu sesión ha expirado. Inicia sesión de nuevo.",
+    "unauthorized": "No tienes permisos para esta acción.",
+    "notFound": "El recurso no fue encontrado.",
+    "serverError": "Error del servidor. Intenta más tarde."
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "welcome": "¡Bienvenido de nuevo!",
+    "subtitle": "Ingresa a tu cuenta ATS",
+    "username": "Usuario o correo electrónico",
+    "password": "Contraseña",
+    "rememberMe": "Recordarme",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "errorInvalid": "Usuario o contraseña incorrectos",
+    "errorEmpty": "Por favor completa todos los campos"
+  }
+}

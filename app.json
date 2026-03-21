@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "ATS Mobile",
+    "slug": "ats-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "atsmobile",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.atsmobile.app",
+      "buildNumber": "1"
+    },
+    "android": {
+      "package": "com.atsmobile.app",
+      "versionCode": 1,
+      "permissions": ["CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

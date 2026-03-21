@@ -1,0 +1,100 @@
+{
+  "common": {
+    "appName": "ATS Mobile",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "filter": "Filter",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "viewAll": "View All",
+    "today": "Today",
+    "language": "Language",
+    "spanish": "Spanish",
+    "english": "English",
+    "selectLanguage": "Select Language"
+  },
+  "welcome": {
+    "greeting": "Welcome back!",
+    "hello": "Hello",
+    "searchPlaceholder": "Search job openings...",
+    "activeJobs": "Active Jobs",
+    "applicants": "Applicants",
+    "hired": "Hired",
+    "thisMonth": "This month",
+    "activeJobOpenings": "Active Job Openings",
+    "newApplicants": "new today",
+    "scheduled": "scheduled",
+    "justPosted": "Just posted",
+    "notifications": "Notifications"
+  },
+  "jobStatus": {
+    "active": "ACTIVE",
+    "interviewing": "INTERVIEWING",
+    "new": "NEW",
+    "closed": "CLOSED",
+    "paused": "PAUSED",
+    "draft": "DRAFT"
+  },
+  "tabs": {
+    "dashboard": "Dashboard",
+    "applicants": "Applicants",
+    "calendar": "Calendar",
+    "profile": "Profile"
+  },
+  "profile": {
+    "title": "My Profile",
+    "role": "Role",
+    "department": "Department",
+    "email": "Email",
+    "phone": "Phone",
+    "settings": "Settings",
+    "logout": "Log out",
+    "changeLanguage": "Change Language",
+    "notifications": "Notifications",
+    "about": "About"
+  },
+  "applicants": {
+    "title": "Applicants",
+    "total": "Total applicants",
+    "new": "New",
+    "screening": "Screening",
+    "interviewing": "Interviewing",
+    "hired": "Hired",
+    "rejected": "Rejected"
+  },
+  "jobs": {
+    "title": "Jobs",
+    "location": "Location",
+    "department": "Department",
+    "type": "Type",
+    "postedDate": "Posted",
+    "closingDate": "Closing",
+    "applicantsCount": "Applicants"
+  },
+  "errors": {
+    "networkError": "Connection error. Check your internet.",
+    "sessionExpired": "Your session has expired. Please log in again.",
+    "unauthorized": "You don't have permission for this action.",
+    "notFound": "The resource was not found.",
+    "serverError": "Server error. Please try again later."
+  },
+  "auth": {
+    "login": "Log in",
+    "welcome": "Welcome back!",
+    "subtitle": "Sign in to your ATS account",
+    "username": "Username or email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot your password?",
+    "errorInvalid": "Invalid username or password",
+    "errorEmpty": "Please fill in all fields"
+  }
+}
