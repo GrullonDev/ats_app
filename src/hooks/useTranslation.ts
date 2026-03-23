@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useLanguageStore } from '@store/languageStore';
 import i18n from '@i18n/index';
-import type { SupportedLanguage } from '@types/index';
+import type { SupportedLanguage } from '@/types';
 
 /**
  * Hook para acceder a las traducciones y el idioma actual.
@@ -17,7 +17,8 @@ export const useTranslation = () => {
    * Función de traducción — devuelve el texto según el idioma activo
    */
   const t = useCallback(
-    (key: string, options?: Record<string, unknown>): string => {
+    (key: string, options?: Record<string, unknown>): any => {
+      // @ts-ignore - i18n might return array/object depending on key
       return i18n.t(key, options);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
