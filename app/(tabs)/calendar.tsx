@@ -6,8 +6,9 @@ import {
   TouchableOpacity,
   ScrollView,
   FlatList,
+  Platform,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { scale, verticalScale, moderateScale } from '@utils/responsive';
 import { Colors, Spacing, Typography, BorderRadius, Shadows } from '@constants/index';
@@ -15,8 +16,12 @@ import { useTranslation } from '@hooks/useTranslation';
 import { Avatar, Card } from '@components/ui';
 import { MOCK_INTERVIEWS } from '@utils/mockData';
 
+/**
+ * Pantalla de Calendario de Entrevistas
+ */
 export default function CalendarTab() {
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
   const [viewType, setViewType] = useState<'day' | 'week'>('day');
   const [selectedDay, setSelectedDay] = useState(22);
 
@@ -152,7 +157,13 @@ export default function CalendarTab() {
         showsVerticalScrollIndicator={false}
       />
 
-      <TouchableOpacity style={styles.fab}>
+      <TouchableOpacity 
+        style={[
+          styles.fab, 
+          { bottom: insets.bottom + verticalScale(88) }
+        ]}
+        activeOpacity={0.8}
+      >
         <Ionicons name="add" size={30} color={Colors.white} />
       </TouchableOpacity>
     </SafeAreaView>
@@ -273,7 +284,7 @@ const styles = StyleSheet.create({
   },
   interviewsList: {
     paddingHorizontal: Spacing[4],
-    paddingBottom: 100,
+    paddingBottom: 110, // Account for floating tab bar
   },
   interviewCard: {
     backgroundColor: Colors.white,
@@ -382,14 +393,14 @@ const styles = StyleSheet.create({
   },
   fab: {
     position: 'absolute',
-    bottom: verticalScale(20),
     right: scale(20),
-    width: scale(60),
-    height: scale(60),
-    borderRadius: scale(30),
-    backgroundColor: Colors.primary[800],
+    width: moderateScale(56),
+    height: moderateScale(56),
+    borderRadius: moderateScale(28),
+    backgroundColor: Colors.primary[700],
     alignItems: 'center',
     justifyContent: 'center',
-    ...Shadows.md,
+    ...Shadows.lg,
+    zIndex: 999,
   },
 });

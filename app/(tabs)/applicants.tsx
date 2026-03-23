@@ -14,7 +14,7 @@ import { Colors, Spacing, Typography, BorderRadius, Shadows } from '@constants/i
 import { useTranslation } from '@hooks/useTranslation';
 import { Avatar, StatusBadge, SearchInput, Card } from '@components/ui';
 import { MOCK_APPLICANTS, MOCK_STATS } from '@utils/mockData';
-import { Applicant } from '@types/index';
+import { Applicant } from '@/types';
 import { useRouter } from 'expo-router';
 
 type FilterType = 'ALL' | 'APPLIED' | 'SCREENING' | 'INTERVIEW' | 'OFFER';
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   listContent: {
-    paddingBottom: Spacing[4],
+    paddingBottom: 110, // Account for floating tab bar
   },
   headerContent: {
     padding: Spacing[4],

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { Platform } from 'react-native';
+import { Platform, View, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Colors, Typography } from '@constants/index';
 import { useTranslation } from '@hooks/useTranslation';
@@ -12,27 +13,44 @@ import { useTranslation } from '@hooks/useTranslation';
  */
 export default function TabsLayout() {
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
 
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: Colors.primary[700],
-        tabBarInactiveTintColor: Colors.gray[400],
-        tabBarStyle: {
-          backgroundColor: Colors.surface,
-          borderTopColor: Colors.border,
-          borderTopWidth: 1,
-          height: Platform.OS === 'ios' ? 85 : 65,
-          paddingBottom: Platform.OS === 'ios' ? 28 : 10,
-          paddingTop: 8,
-        },
-        tabBarLabelStyle: {
-          fontSize: Typography.fontSize.xs,
-          fontWeight: Typography.fontWeight.medium,
-        },
-      }}
-    >
+    <View style={styles.container}>
+      <Tabs
+        screenOptions={{
+          headerShown: false,
+          tabBarActiveTintColor: Colors.primary[700],
+          tabBarInactiveTintColor: Colors.gray[400],
+          tabBarShowLabel: true,
+          tabBarStyle: {
+            position: 'absolute',
+            bottom: insets.bottom > 0 ? insets.bottom : 16,
+            left: 16,
+            right: 16,
+            height: 72,
+            borderRadius: 24,
+            backgroundColor: Colors.surface,
+            borderTopWidth: 0,
+            borderWidth: 1,
+            borderColor: Colors.border,
+            elevation: 12,
+            shadowColor: Colors.black,
+            shadowOffset: { width: 0, height: 8 },
+            shadowOpacity: 0.1,
+            shadowRadius: 16,
+            paddingBottom: 0,
+          },
+          tabBarLabelStyle: {
+            fontSize: 11,
+            fontWeight: '600',
+            marginBottom: 10,
+          },
+          tabBarIconStyle: {
+            marginTop: 10,
+          },
+        }}
+      >
       {/* Dashboard / Inicio */}
       <Tabs.Screen
         name="index"
@@ -76,6 +94,14 @@ export default function TabsLayout() {
           ),
         }}
       />
-    </Tabs>
+      </Tabs>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.background,
+  },
+});

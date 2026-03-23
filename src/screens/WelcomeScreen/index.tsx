@@ -19,7 +19,7 @@ import { StatusBadge } from '@components/ui/StatusBadge';
 import { useTranslation } from '@hooks/useTranslation';
 import { useAuthStore } from '@store/authStore';
 import { useATSStore } from '@store/atsStore';
-import type { Job, JobStatus } from '@types/index';
+import type { Job, JobStatus } from '@/types';
 import { MOCK_JOBS, MOCK_USER, MOCK_STATS } from '@utils/mockData';
 
 // ─────────────────────────────────────────────
@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: Spacing[4],
-    paddingBottom: Spacing[8],
+    paddingBottom: 110, // Account for floating tab bar
   },
 
   // ── Header ──

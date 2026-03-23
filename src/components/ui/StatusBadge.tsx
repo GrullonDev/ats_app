@@ -24,6 +24,7 @@ type BadgeVariant =
   | 'first_interview'
   | 'second_interview'
   | 'technical_test'
+  | 'final_interview'
   | 'offer_sent'
   | 'onboarding';
 
@@ -50,6 +51,7 @@ const BADGE_STYLES: Record<BadgeVariant, { bg: string; text: string }> = {
   first_interview: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
   second_interview: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
   technical_test: { bg: Colors.accent.orangeLight, text: Colors.accent.orange },
+  final_interview: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
   offer_sent: { bg: Colors.accent.greenLight, text: Colors.accent.green },
   onboarding: { bg: Colors.accent.greenLight, text: Colors.accent.green },
 };
