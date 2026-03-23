@@ -33,7 +33,51 @@
     "newApplicants": "new today",
     "scheduled": "scheduled",
     "justPosted": "Just posted",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "hiringOverview": "Here’s your hiring overview",
+    "searchPlaceholderExtended": "Search jobs, candidates, or teams",
+    "filters": {
+      "all": "All",
+      "active": "Active",
+      "interviewing": "Interviewing",
+      "urgent": "Urgent"
+    },
+    "quickActions": "Quick Actions",
+    "actions": {
+      "createJob": "New Job",
+      "reviewApplicants": "Review",
+      "schedule": "Schedule",
+      "postVacancy": "Post"
+    },
+    "insights": "Insights & Alerts",
+    "viewDetails": "View Details",
+    "reviewPipeline": "Review Pipeline",
+    "reviewPipelineFull": "Review Candidates Pipeline",
+    "seeByStage": "See applicants by stage",
+    "latestToday": "Latest applicants today",
+    "moreThan15": "More than 15 candidates each",
+    "dailySummaryAttention": "{{count}} positions need your attention today",
+    "priorityVacancies": "Priority Active Jobs",
+    "needsAttentionCount": "{{count}} Jobs",
+    "needsAttention": "Needs Attention Today",
+    "needsAttentionAlt": "Need Attention",
+    "reviewNow": "Review Now",
+    "daysActive": "{{count}} days active",
+    "topPriority": "{{count}} priority openings",
+    "latestCandidates": "Latest Candidates",
+    "sinceMorning": "+{{count}} since morning",
+    "highPriority": "High Priority",
+    "mediumPriority": "Medium Priority",
+    "emptyStates": {
+      "noActiveJobs": "No active jobs yet",
+      "noNewCandidates": "No new candidates today",
+      "noJobsAttention": "No jobs need attention right now"
+    },
+    "jobMetrics": {
+      "applicants": "applicants",
+      "newToday": "new today",
+      "scheduled": "scheduled"
+    }
   },
   "jobStatus": {
     "active": "ACTIVE",
@@ -44,8 +88,8 @@
     "draft": "DRAFT"
   },
   "tabs": {
-    "dashboard": "Dashboard",
-    "applicants": "Applicants",
+    "dashboard": "Home",
+    "applicants": "Candidates",
     "calendar": "Calendar",
     "profile": "Profile"
   },
@@ -96,7 +140,8 @@
       "cv": "CV",
       "reject": "REJECT",
       "message": "MESSAGE",
-      "moveToNext": "Move to Next Stage"
+      "moveToNext": "Move to Next Stage",
+      "reviewPipeline": "Review Pipeline"
     },
     "tabs": {
       "resume": "Resume",
@@ -109,14 +154,16 @@
     "location": "Current Location",
     "download": "Download",
     "stages": {
-      "application_review": "APPLICATION REVIEW",
-      "phone_screening": "PHONE SCREENING",
-      "first_interview": "FIRST INTERVIEW",
-      "second_interview": "SECOND INTERVIEW",
-      "technical_test": "TECHNICAL TEST",
-      "final_interview": "FINAL INTERVIEW",
-      "offer_sent": "OFFER SENT",
-      "onboarding": "ONBOARDING"
+      "applied": "Applied",
+      "screening": "Screening",
+      "interviewing": "Interview",
+      "psychometric_test": "Psychometric",
+      "selection": "Shortlisted",
+      "offered": "Offered",
+      "hired": "Hired",
+      "onboarding": "Onboarding",
+      "rejected": "Rejected",
+      "withdrawn": "Withdrawn"
     }
   },
   "calendar": {

@@ -19,14 +19,13 @@ type BadgeVariant =
   | 'hired' 
   | 'rejected'
   | 'screening'
-  | 'application_review'
-  | 'phone_screening'
-  | 'first_interview'
-  | 'second_interview'
-  | 'technical_test'
-  | 'final_interview'
-  | 'offer_sent'
-  | 'onboarding';
+  | 'applied'
+  | 'psychometric_test'
+  | 'selection'
+  | 'offered'
+  | 'onboarding'
+  | 'urgent'
+  | 'withdrawn';
 
 interface BadgeProps {
   label: string;
@@ -46,14 +45,13 @@ const BADGE_STYLES: Record<BadgeVariant, { bg: string; text: string }> = {
   hired: { bg: Colors.accent.greenLight, text: Colors.accent.green },
   rejected: { bg: Colors.accent.redLight, text: Colors.accent.red },
   screening: { bg: Colors.accent.purpleLight, text: Colors.accent.purple },
-  application_review: { bg: Colors.gray[200], text: Colors.gray[600] },
-  phone_screening: { bg: Colors.accent.purpleLight, text: Colors.accent.purple },
-  first_interview: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
-  second_interview: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
-  technical_test: { bg: Colors.accent.orangeLight, text: Colors.accent.orange },
-  final_interview: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
-  offer_sent: { bg: Colors.accent.greenLight, text: Colors.accent.green },
+  applied: { bg: Colors.gray[200], text: Colors.gray[600] },
+  psychometric_test: { bg: Colors.accent.orangeLight, text: Colors.accent.orange },
+  selection: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
+  offered: { bg: Colors.accent.greenLight, text: Colors.accent.green },
   onboarding: { bg: Colors.accent.greenLight, text: Colors.accent.green },
+  urgent: { bg: Colors.accent.redLight, text: Colors.accent.red },
+  withdrawn: { bg: Colors.gray[300], text: Colors.gray[700] },
 };
 
 /**

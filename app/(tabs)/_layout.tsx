@@ -26,19 +26,19 @@ export default function TabsLayout() {
           tabBarStyle: {
             position: 'absolute',
             bottom: insets.bottom > 0 ? insets.bottom : 16,
-            left: 16,
-            right: 16,
-            height: 72,
-            borderRadius: 24,
-            backgroundColor: Colors.surface,
+            left: 20,
+            right: 20,
+            height: 64,
+            borderRadius: 32,
+            backgroundColor: 'rgba(255, 255, 255, 0.95)',
             borderTopWidth: 0,
             borderWidth: 1,
-            borderColor: Colors.border,
-            elevation: 12,
-            shadowColor: Colors.black,
-            shadowOffset: { width: 0, height: 8 },
-            shadowOpacity: 0.1,
-            shadowRadius: 16,
+            borderColor: 'rgba(0, 0, 0, 0.05)',
+            elevation: 4,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.08,
+            shadowRadius: 10,
             paddingBottom: 0,
           },
           tabBarLabelStyle: {
@@ -51,24 +51,28 @@ export default function TabsLayout() {
           },
         }}
       >
-      {/* Dashboard / Inicio */}
+      {/* Home / Inicio */}
       <Tabs.Screen
         name="index"
         options={{
           title: t('tabs.dashboard'),
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="grid-outline" size={size} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <View style={focused && styles.activeTabIcon}>
+              <Ionicons name={focused ? "home" : "home-outline"} size={22} color={color} />
+            </View>
           ),
         }}
       />
 
-      {/* Aplicantes */}
+      {/* Candidates / Candidatos */}
       <Tabs.Screen
         name="applicants"
         options={{
           title: t('tabs.applicants'),
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="people-outline" size={size} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <View style={focused && styles.activeTabIcon}>
+              <Ionicons name={focused ? "people" : "people-outline"} size={22} color={color} />
+            </View>
           ),
         }}
       />
@@ -78,8 +82,10 @@ export default function TabsLayout() {
         name="calendar"
         options={{
           title: t('tabs.calendar'),
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="calendar-outline" size={size} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <View style={focused && styles.activeTabIcon}>
+              <Ionicons name={focused ? "calendar" : "calendar-outline"} size={22} color={color} />
+            </View>
           ),
         }}
       />
@@ -89,8 +95,10 @@ export default function TabsLayout() {
         name="profile"
         options={{
           title: t('tabs.profile'),
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-outline" size={size} color={color} />
+          tabBarIcon: ({ color, size, focused }) => (
+            <View style={focused && styles.activeTabIcon}>
+              <Ionicons name={focused ? "person" : "person-outline"} size={22} color={color} />
+            </View>
           ),
         }}
       />
@@ -103,5 +111,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  activeTabIcon: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    backgroundColor: Colors.primary[50], // Soft background for active icon
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: -4,
   },
 });

@@ -1,4 +1,4 @@
-import type { Job, Applicant, DashboardStats, User } from '@types/index';
+import type { Job, Applicant, DashboardStats, User } from '@/types';
 
 /**
  * Datos de prueba para desarrollo y prototipado.
@@ -66,7 +66,7 @@ export const MOCK_APPLICANTS: Applicant[] = [
     jobId: '1',
     jobTitle: 'Senior UI/UX Designer',
     status: 'interviewing',
-    stage: 'second_interview',
+    stage: 'interviewing',
     appliedDate: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(), // 2h ago
     rating: 4.8,
     isOnline: true,
@@ -77,8 +77,8 @@ export const MOCK_APPLICANTS: Applicant[] = [
     email: 'jordan.smith@email.com',
     jobId: '2',
     jobTitle: 'Backend Developer',
-    status: 'new',
-    stage: 'application_review',
+    status: 'applied',
+    stage: 'applied',
     appliedDate: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // Yesterday
   },
   {
@@ -88,9 +88,41 @@ export const MOCK_APPLICANTS: Applicant[] = [
     jobId: '1',
     jobTitle: 'Senior UI/UX Designer',
     status: 'screening',
-    stage: 'phone_screening',
+    stage: 'screening',
     appliedDate: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(), // 3 days ago
     rating: 4.2,
+  },
+  {
+    id: 'a4',
+    name: 'Elena Rojas',
+    email: 'elena.rojas@email.com',
+    jobId: '1',
+    jobTitle: 'Senior UI/UX Designer',
+    status: 'interviewing',
+    stage: 'psychometric_test',
+    appliedDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+    rating: 4.5,
+  },
+  {
+    id: 'a5',
+    name: 'Julian Casablancas',
+    email: 'julian.c@email.com',
+    jobId: '2',
+    jobTitle: 'Backend Developer',
+    status: 'hired',
+    stage: 'hired',
+    appliedDate: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'a6',
+    name: 'Sarah Connor',
+    email: 's.connor@email.com',
+    jobId: '3',
+    jobTitle: 'Product Manager',
+    status: 'offered',
+    stage: 'offered',
+    appliedDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+    rating: 4.9,
   },
 ];
 

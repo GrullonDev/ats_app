@@ -68,14 +68,16 @@ export type ApplicantStatus =
   | 'withdrawn';
 
 export type HiringStage =
-  | 'application_review'
-  | 'phone_screening'
-  | 'first_interview'
-  | 'second_interview'
-  | 'technical_test'
-  | 'final_interview'
-  | 'offer_sent'
-  | 'onboarding';
+  | 'applied'
+  | 'screening'
+  | 'interviewing'
+  | 'psychometric_test'
+  | 'selection'
+  | 'offered'
+  | 'hired'
+  | 'onboarding'
+  | 'rejected'
+  | 'withdrawn';
 
 // ─────────────────────────────────────────────
 // Estadísticas del Dashboard

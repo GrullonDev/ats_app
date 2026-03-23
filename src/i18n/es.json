@@ -33,7 +33,51 @@
     "newApplicants": "nuevos hoy",
     "scheduled": "programados",
     "justPosted": "Recién publicado",
-    "notifications": "Notificaciones"
+    "notifications": "Notificaciones",
+    "hiringOverview": "Aquí tu resumen de contratación",
+    "searchPlaceholderExtended": "Buscar empleos, candidatos o equipos",
+    "filters": {
+      "all": "Todo",
+      "active": "Activo",
+      "interviewing": "Entrevistas",
+      "urgent": "Urgente"
+    },
+    "quickActions": "Acciones Rápidas",
+    "actions": {
+      "createJob": "Nueva Vacante",
+      "reviewApplicants": "Revisar",
+      "schedule": "Agendar",
+      "postVacancy": "Publicar"
+    },
+    "insights": "Insights y Alertas",
+    "viewDetails": "Ver Detalle",
+    "reviewPipeline": "Revisar Pipeline",
+    "reviewPipelineFull": "Revisar Pipeline de Candidatos",
+    "seeByStage": "Ver aplicantes por etapa",
+    "latestToday": "Últimos aplicantes de hoy",
+    "moreThan15": "Más de 15 candidatos cada una",
+    "dailySummaryAttention": "{{count}} plazas necesitan tu atención hoy",
+    "priorityVacancies": "Priority Active Jobs",
+    "needsAttentionCount": "{{count}} Puestos",
+    "needsAttention": "Needs Attention Today",
+    "needsAttentionAlt": "Necesitan Atención",
+    "reviewNow": "Revisar Ahora",
+    "daysActive": "{{count}} días activa",
+    "topPriority": "{{count}} vacantes prioritarias",
+    "latestCandidates": "Últimos Candidatos",
+    "sinceMorning": "+{{count}} desde la mañana",
+    "highPriority": "Prioridad Alta",
+    "mediumPriority": "Prioridad Media",
+    "emptyStates": {
+      "noActiveJobs": "Sin vacantes activas aún",
+      "noNewCandidates": "Sin nuevos candidatos hoy",
+      "noJobsAttention": "No hay puestos que necesiten atención"
+    },
+    "jobMetrics": {
+      "applicants": "aplicantes",
+      "newToday": "nuevos hoy",
+      "scheduled": "programados"
+    }
   },
   "jobStatus": {
     "active": "ACTIVO",
@@ -44,8 +88,8 @@
     "draft": "BORRADOR"
   },
   "tabs": {
-    "dashboard": "Inicio",
-    "applicants": "Aplicantes",
+    "dashboard": "Home",
+    "applicants": "Candidatos",
     "calendar": "Calendario",
     "profile": "Perfil"
   },
@@ -96,7 +140,8 @@
       "cv": "CV",
       "reject": "RECHAZAR",
       "message": "MENSAJE",
-      "moveToNext": "Mover a Siguiente Etapa"
+      "moveToNext": "Mover a Siguiente Etapa",
+      "reviewPipeline": "Revisar Pipeline"
     },
     "tabs": {
       "resume": "Currículum",
@@ -109,14 +154,16 @@
     "location": "Ubicación actual",
     "download": "Descargar",
     "stages": {
-      "application_review": "REVISIÓN DE APLICACIÓN",
-      "phone_screening": "ENTREVISTA TELEFÓNICA",
-      "first_interview": "PRIMERA ENTREVISTA",
-      "second_interview": "SEGUNDA ENTREVISTA",
-      "technical_test": "PRUEBA TÉCNICA",
-      "final_interview": "ENTREVISTA FINAL",
-      "offer_sent": "OFERTA ENVIADA",
-      "onboarding": "ONBOARDING"
+      "applied": "Aplicó",
+      "screening": "Filtrado",
+      "interviewing": "Entrevista",
+      "psychometric_test": "Psicométrica",
+      "selection": "Selección",
+      "offered": "Ofertado",
+      "hired": "Contratado",
+      "onboarding": "Ingreso",
+      "rejected": "Rechazado",
+      "withdrawn": "Retirado"
     }
   },
   "calendar": {

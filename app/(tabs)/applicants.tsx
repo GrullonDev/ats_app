@@ -17,7 +17,7 @@ import { MOCK_APPLICANTS, MOCK_STATS } from '@utils/mockData';
 import { Applicant } from '@/types';
 import { useRouter } from 'expo-router';
 
-type FilterType = 'ALL' | 'APPLIED' | 'SCREENING' | 'INTERVIEW' | 'OFFER';
+type FilterType = 'ALL' | 'applied' | 'screening' | 'interviewing' | 'psychometric_test' | 'offered' | 'hired';
 
 export default function ApplicantsTab() {
   const { t } = useTranslation();
@@ -26,11 +26,13 @@ export default function ApplicantsTab() {
   const [activeFilter, setActiveFilter] = useState<FilterType>('ALL');
 
   const filters: { id: FilterType; label: string }[] = [
-    { id: 'ALL', label: `${t('applicants.filterAll')} (7)` },
-    { id: 'APPLIED', label: t('applicants.filterApplied') },
-    { id: 'SCREENING', label: t('applicants.filterScreening') },
-    { id: 'INTERVIEW', label: t('applicants.filterInterview') },
-    { id: 'OFFER', label: t('applicants.filterOffer') },
+    { id: 'ALL', label: t('applicants.filterAll') },
+    { id: 'applied', label: t('applicants.stages.applied') },
+    { id: 'screening', label: t('applicants.stages.screening') },
+    { id: 'interviewing', label: t('applicants.stages.interviewing') },
+    { id: 'psychometric_test', label: t('applicants.stages.psychometric_test') },
+    { id: 'offered', label: t('applicants.stages.offered') },
+    { id: 'hired', label: t('applicants.stages.hired') },
   ];
 
   const stats = [
@@ -48,12 +50,7 @@ export default function ApplicantsTab() {
       if (!matchesSearch) return false;
       
       if (activeFilter === 'ALL') return true;
-      if (activeFilter === 'APPLIED') return applicant.status === 'applied' || applicant.status === 'new';
-      if (activeFilter === 'SCREENING') return applicant.status === 'screening';
-      if (activeFilter === 'INTERVIEW') return applicant.status === 'interviewing';
-      if (activeFilter === 'OFFER') return applicant.status === 'offered';
-      
-      return true;
+      return applicant.stage === activeFilter;
     });
   }, [searchQuery, activeFilter]);
 

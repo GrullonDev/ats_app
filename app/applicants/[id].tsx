@@ -68,9 +68,10 @@ export default function CandidateProfileScreen() {
           <Text style={styles.jobTitle}>{applicant.jobTitle}</Text>
           
           <View style={styles.statusLocationRow}>
-            <View style={styles.stageBadge}>
-              <Text style={styles.stageBadgeText}>{t('applicants.inInterviewStage')}</Text>
-            </View>
+            <StatusBadge
+              label={t(`applicants.stages.${applicant.stage}`)}
+              variant={applicant.stage as any}
+            />
             <Text style={styles.dot}>•</Text>
             <Text style={styles.locationText}>San Francisco, CA</Text>
           </View>
@@ -145,7 +146,7 @@ export default function CandidateProfileScreen() {
             <Text style={styles.iconBtnLabel}>{t('applicants.actions.message')}</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.nextStageBtn}>
+        <TouchableOpacity style={styles.nextStageBtn} activeOpacity={0.8} onPress={() => router.back()}>
           <Text style={styles.nextStageText}>{t('applicants.actions.moveToNext')}</Text>
           <Ionicons name="arrow-forward" size={20} color={Colors.white} />
         </TouchableOpacity>
