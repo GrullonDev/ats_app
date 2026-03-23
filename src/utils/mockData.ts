@@ -19,6 +19,8 @@ export const MOCK_STATS: DashboardStats = {
   totalApplicants: 245,
   hiredThisMonth: 8,
   applicantsGrowthPercent: 12,
+  newApplicants: 42,
+  inInterview: 18,
 };
 
 export const MOCK_JOBS: Job[] = [
@@ -59,22 +61,62 @@ export const MOCK_JOBS: Job[] = [
 export const MOCK_APPLICANTS: Applicant[] = [
   {
     id: 'a1',
-    name: 'Maria García',
-    email: 'maria@email.com',
+    name: 'Alex Rivera',
+    email: 'alex.rivera@email.com',
     jobId: '1',
-    status: 'screening',
-    stage: 'phone_screen',
-    appliedDate: '2026-03-18T00:00:00Z',
-    score: 88,
+    jobTitle: 'Senior UI/UX Designer',
+    status: 'interviewing',
+    stage: 'second_interview',
+    appliedDate: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(), // 2h ago
+    rating: 4.8,
+    isOnline: true,
   },
   {
     id: 'a2',
-    name: 'Carlos Rodríguez',
-    email: 'carlos@email.com',
+    name: 'Jordan Smith',
+    email: 'jordan.smith@email.com',
     jobId: '2',
-    status: 'interviewing',
-    stage: 'technical',
-    appliedDate: '2026-03-15T00:00:00Z',
-    score: 92,
+    jobTitle: 'Backend Developer',
+    status: 'new',
+    stage: 'application_review',
+    appliedDate: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // Yesterday
+  },
+  {
+    id: 'a3',
+    name: 'Marcus Chen',
+    email: 'marcus.chen@email.com',
+    jobId: '1',
+    jobTitle: 'Senior UI/UX Designer',
+    status: 'screening',
+    stage: 'phone_screening',
+    appliedDate: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(), // 3 days ago
+    rating: 4.2,
+  },
+];
+
+export const MOCK_INTERVIEWS = [
+  {
+    id: 'i1',
+    applicantId: 'a1',
+    applicantName: 'Alex Rivera',
+    jobTitle: 'Senior UI/UX Designer',
+    time: '10:00 AM',
+    duration: '60 min',
+    type: 'Technical Interview',
+    modality: 'Video Call',
+    interviewers: ['Sarah Johnson', 'Mike Chen'],
+    status: 'scheduled',
+  },
+  {
+    id: 'i2',
+    applicantId: 'a3',
+    applicantName: 'Marcus Chen',
+    jobTitle: 'Senior UI/UX Designer',
+    time: '2:00 PM',
+    duration: '30 min',
+    type: 'Phone Screening',
+    modality: 'Voice Call',
+    interviewers: ['John Doe'],
+    status: 'scheduled',
   },
 ];

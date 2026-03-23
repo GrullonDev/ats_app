@@ -62,13 +62,62 @@
     "about": "Acerca de"
   },
   "applicants": {
-    "title": "Aplicantes",
-    "total": "Total aplicantes",
-    "new": "Nuevos",
-    "screening": "En revisión",
-    "interviewing": "Entrevistando",
-    "hired": "Contratados",
-    "rejected": "Rechazados"
+    "title": "Todos los Aplicantes",
+    "subtitle": "{{count}} candidatos en todas las posiciones",
+    "searchPlaceholder": "Buscar por nombre o puesto...",
+    "filterAll": "TODOS",
+    "filterApplied": "APLICADOS",
+    "filterScreening": "REVISIÓN",
+    "filterInterview": "ENTREVISTA",
+    "filterOffer": "OFERTA",
+    "statsTotal": "Total",
+    "statsNew": "Nuevos",
+    "statsInterview": "Entrevista",
+    "statsHired": "Contratados",
+    "profileTitle": "Perfil del Candidato",
+    "inInterviewStage": "EN ETAPA DE ENTREVISTA",
+    "actions": {
+      "email": "EMAIL",
+      "call": "LLAMAR",
+      "linkedin": "LINKEDIN",
+      "cv": "CV",
+      "reject": "RECHAZAR",
+      "message": "MENSAJE",
+      "moveToNext": "Mover a Siguiente Etapa"
+    },
+    "tabs": {
+      "resume": "Currículum",
+      "notes": "Notas Entrevista",
+      "history": "Historial"
+    },
+    "contactInfo": "INFORMACIÓN DE CONTACTO",
+    "emailAddress": "Correo electrónico",
+    "phoneNumber": "Teléfono",
+    "location": "Ubicación actual",
+    "download": "Descargar",
+    "stages": {
+      "application_review": "REVISIÓN DE APLICACIÓN",
+      "phone_screening": "ENTREVISTA TELEFÓNICA",
+      "first_interview": "PRIMERA ENTREVISTA",
+      "second_interview": "SEGUNDA ENTREVISTA",
+      "technical_test": "PRUEBA TÉCNICA",
+      "final_interview": "ENTREVISTA FINAL",
+      "offer_sent": "OFERTA ENVIADA",
+      "onboarding": "ONBOARDING"
+    }
+  },
+  "calendar": {
+    "title": "Calendario de Entrevistas",
+    "day": "Día",
+    "week": "Semana",
+    "todaySchedule": "Agenda de Hoy",
+    "interviewsCount": "{{count}} Entrevistas",
+    "joinCall": "Unirse a Videollamada",
+    "reschedule": "Reprogramar",
+    "technicalInterview": "Entrevista Técnica",
+    "videoCall": "Videollamada",
+    "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+    "days": ["DOM", "LUN", "MAR", "MIE", "JUE", "VIE", "SAB"]
   },
   "jobs": {
     "title": "Vacantes",

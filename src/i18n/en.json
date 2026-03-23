@@ -62,13 +62,62 @@
     "about": "About"
   },
   "applicants": {
-    "title": "Applicants",
-    "total": "Total applicants",
-    "new": "New",
-    "screening": "Screening",
-    "interviewing": "Interviewing",
-    "hired": "Hired",
-    "rejected": "Rejected"
+    "title": "All Applicants",
+    "subtitle": "{{count}} candidates across all positions",
+    "searchPlaceholder": "Search by name or position...",
+    "filterAll": "ALL",
+    "filterApplied": "APPLIED",
+    "filterScreening": "SCREENING",
+    "filterInterview": "INTERVIEW",
+    "filterOffer": "OFFER",
+    "statsTotal": "Total",
+    "statsNew": "New",
+    "statsInterview": "Interview",
+    "statsHired": "Hired",
+    "profileTitle": "Candidate Profile",
+    "inInterviewStage": "IN INTERVIEW STAGE",
+    "actions": {
+      "email": "EMAIL",
+      "call": "CALL",
+      "linkedin": "LINKEDIN",
+      "cv": "CV",
+      "reject": "REJECT",
+      "message": "MESSAGE",
+      "moveToNext": "Move to Next Stage"
+    },
+    "tabs": {
+      "resume": "Resume",
+      "notes": "Interview Notes",
+      "history": "History"
+    },
+    "contactInfo": "CONTACT INFORMATION",
+    "emailAddress": "Email Address",
+    "phoneNumber": "Phone Number",
+    "location": "Current Location",
+    "download": "Download",
+    "stages": {
+      "application_review": "APPLICATION REVIEW",
+      "phone_screening": "PHONE SCREENING",
+      "first_interview": "FIRST INTERVIEW",
+      "second_interview": "SECOND INTERVIEW",
+      "technical_test": "TECHNICAL TEST",
+      "final_interview": "FINAL INTERVIEW",
+      "offer_sent": "OFFER SENT",
+      "onboarding": "ONBOARDING"
+    }
+  },
+  "calendar": {
+    "title": "Interview Calendar",
+    "day": "Day",
+    "week": "Week",
+    "todaySchedule": "Today's Schedule",
+    "interviewsCount": "{{count}} Interviews",
+    "joinCall": "Join Video Call",
+    "reschedule": "Reschedule",
+    "technicalInterview": "Technical Interview",
+    "videoCall": "Video Call",
+    "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    "days": ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   },
   "jobs": {
     "title": "Jobs",

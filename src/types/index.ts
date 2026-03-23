@@ -46,16 +46,20 @@ export interface Applicant {
   phone?: string;
   avatar?: string;
   jobId: string;
+  jobTitle?: string; // Título opcional del puesto para visualización
   status: ApplicantStatus;
   stage: HiringStage;
-  appliedDate: string;
+  appliedDate: string; // ISO 8601
   resumeUrl?: string;
-  score?: number; // 0-100
+  score?: number; // 0-100 (interno)
+  rating?: number; // 0-5.0 (estrellas)
   notes?: string;
+  isOnline?: boolean;
 }
 
 export type ApplicantStatus =
   | 'new'
+  | 'applied'
   | 'screening'
   | 'interviewing'
   | 'offered'
@@ -64,12 +68,13 @@ export type ApplicantStatus =
   | 'withdrawn';
 
 export type HiringStage =
-  | 'application'
-  | 'phone_screen'
-  | 'technical'
-  | 'culture_fit'
+  | 'application_review'
+  | 'phone_screening'
+  | 'first_interview'
+  | 'second_interview'
+  | 'technical_test'
   | 'final_interview'
-  | 'offer'
+  | 'offer_sent'
   | 'onboarding';
 
 // ─────────────────────────────────────────────
@@ -80,6 +85,8 @@ export interface DashboardStats {
   totalApplicants: number;
   hiredThisMonth: number;
   applicantsGrowthPercent: number;
+  newApplicants?: number;
+  inInterview?: number;
 }
 
 // ─────────────────────────────────────────────

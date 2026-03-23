@@ -9,7 +9,23 @@ import {
 } from 'react-native';
 import { Colors, BorderRadius, Shadows, Typography } from '@constants/index';
 
-type BadgeVariant = 'active' | 'interviewing' | 'new' | 'closed' | 'paused' | 'draft' | 'hired' | 'rejected';
+type BadgeVariant = 
+  | 'active' 
+  | 'interviewing' 
+  | 'new' 
+  | 'closed' 
+  | 'paused' 
+  | 'draft' 
+  | 'hired' 
+  | 'rejected'
+  | 'screening'
+  | 'application_review'
+  | 'phone_screening'
+  | 'first_interview'
+  | 'second_interview'
+  | 'technical_test'
+  | 'offer_sent'
+  | 'onboarding';
 
 interface BadgeProps {
   label: string;
@@ -28,6 +44,14 @@ const BADGE_STYLES: Record<BadgeVariant, { bg: string; text: string }> = {
   draft: { bg: Colors.gray[100], text: Colors.gray[500] },
   hired: { bg: Colors.accent.greenLight, text: Colors.accent.green },
   rejected: { bg: Colors.accent.redLight, text: Colors.accent.red },
+  screening: { bg: Colors.accent.purpleLight, text: Colors.accent.purple },
+  application_review: { bg: Colors.gray[200], text: Colors.gray[600] },
+  phone_screening: { bg: Colors.accent.purpleLight, text: Colors.accent.purple },
+  first_interview: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
+  second_interview: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
+  technical_test: { bg: Colors.accent.orangeLight, text: Colors.accent.orange },
+  offer_sent: { bg: Colors.accent.greenLight, text: Colors.accent.green },
+  onboarding: { bg: Colors.accent.greenLight, text: Colors.accent.green },
 };
 
 /**
