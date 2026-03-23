@@ -22,19 +22,24 @@ export default function RootLayout() {
     // Esperar a que el store se cargue (hidratación)
     if (!isHydrated) return;
 
-    const inAuthGroup = segments[0] === '(tabs)';
+    // Pequeño retardo para asegurar que el Root Layout y su Stack estén montados
+    const redirectTimeout = setTimeout(() => {
+      const inAuthGroup = segments[0] === '(tabs)';
 
-    // Si no está autenticado y trata de entrar a las pestañas, ir a login
-    if (!isAuthenticated && inAuthGroup) {
-      router.replace('/login');
-    }
-    // Si está autenticado y trata de entrar al login, ir al dashboard
-    else if (isAuthenticated && segments[0] === 'login') {
-      router.replace('/(tabs)');
-    }
+      // Si no está autenticado y trata de entrar a las pestañas, ir a login
+      if (!isAuthenticated && inAuthGroup) {
+        router.replace('/login');
+      }
+      // Si está autenticado y trata de entrar al login, ir al dashboard
+      else if (isAuthenticated && segments[0] === 'login') {
+        router.replace('/(tabs)');
+      }
 
-    // Ocultar splash screen cuando la app esté lista y la lógica de ruta decidida
-    SplashScreen.hideAsync();
+      // Ocultar splash screen cuando la app esté lista
+      SplashScreen.hideAsync();
+    }, 1);
+
+    return () => clearTimeout(redirectTimeout);
   }, [isAuthenticated, segments, isHydrated, router]);
 
   return (

@@ -10,6 +10,7 @@ import {
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { scale, verticalScale, moderateScale } from '@utils/responsive';
 import { Colors, Spacing, Typography, BorderRadius, Shadows } from '@constants/index';
 import { useTranslation } from '@hooks/useTranslation';
 import { Avatar, StatusBadge } from '@components/ui';
@@ -60,7 +61,7 @@ export default function CandidateProfileScreen() {
             name={applicant.name}
             uri={applicant.avatar}
             isOnline={applicant.isOnline}
-            size={100}
+            size={moderateScale(100)}
             style={styles.mainAvatar}
           />
           <Text style={styles.name}>{applicant.name}</Text>
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: Spacing[2],
-    height: 56,
+    height: verticalScale(56),
   },
   navButton: {
     padding: Spacing[2],
@@ -182,7 +183,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   scrollContent: {
-    paddingBottom: 100,
+    paddingBottom: verticalScale(100),
   },
   profileHeader: {
     alignItems: 'center',
@@ -238,8 +239,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   actionIconContainer: {
-    width: 48,
-    height: 48,
+    width: scale(48),
+    height: scale(48),
     borderRadius: BorderRadius.lg,
     backgroundColor: Colors.gray[50],
     alignItems: 'center',
@@ -380,7 +381,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: Spacing[6],
-    height: 56,
+    height: verticalScale(56),
     borderRadius: BorderRadius.lg,
     justifyContent: 'center',
     flex: 2,

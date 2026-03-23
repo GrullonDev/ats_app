@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { scale, verticalScale, moderateScale } from '@utils/responsive';
 import { Colors, Spacing, Typography, BorderRadius, Shadows } from '@constants/index';
 import { useTranslation } from '@hooks/useTranslation';
 import { Avatar, StatusBadge, SearchInput, Card } from '@components/ui';
@@ -128,7 +129,7 @@ export default function ApplicantsTab() {
           name={item.name}
           uri={item.avatar}
           isOnline={item.isOnline}
-          size={56}
+          size={moderateScale(56)}
         />
         <View style={styles.applicantInfo}>
           <View style={styles.nameRow}>
@@ -214,8 +215,8 @@ const styles = StyleSheet.create({
     fontFamily: Typography.fontFamily.regular,
   },
   addButton: {
-    width: 40,
-    height: 40,
+    width: scale(40),
+    height: scale(40),
     borderRadius: BorderRadius.md,
     backgroundColor: Colors.white,
     alignItems: 'center',
@@ -236,7 +237,7 @@ const styles = StyleSheet.create({
     borderRadius: BorderRadius.full,
     backgroundColor: Colors.gray[100],
     marginRight: Spacing[2],
-    height: 36,
+    height: verticalScale(36),
     justifyContent: 'center',
   },
   filterChipActive: {
@@ -258,7 +259,7 @@ const styles = StyleSheet.create({
     borderRadius: BorderRadius.lg,
     padding: Spacing[4],
     marginRight: Spacing[3],
-    minWidth: 100,
+    minWidth: scale(100),
     borderWidth: 1,
     borderColor: Colors.border,
     ...Shadows.sm,

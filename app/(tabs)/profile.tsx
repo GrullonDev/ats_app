@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-
+import { scale, verticalScale, moderateScale } from '@utils/responsive';
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '@constants/index';
 import { useTranslation } from '@hooks/useTranslation';
 import type { SupportedLanguage, LanguageOption } from '@types/index';
@@ -167,9 +167,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing[4],
   },
   avatarLarge: {
-    width: 90,
-    height: 90,
-    borderRadius: 45,
+    width: scale(90),
+    height: scale(90),
+    borderRadius: scale(45),
     backgroundColor: Colors.primary[100],
     alignItems: 'center',
     justifyContent: 'center',
@@ -235,8 +235,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   settingIcon: {
-    width: 38,
-    height: 38,
+    width: scale(38),
+    height: scale(38),
     borderRadius: BorderRadius.lg,
     alignItems: 'center',
     justifyContent: 'center',
@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary[50],
   },
   languageFlag: {
-    fontSize: 26,
+    fontSize: moderateScale(26),
     marginRight: Spacing[3],
   },
   languageLabel: {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, StyleSheet, Text, ViewStyle } from 'react-native';
+import { moderateScale } from '@utils/responsive';
 import { Colors, BorderRadius, Typography } from '@constants/index';
 
 interface AvatarProps {
@@ -13,7 +14,7 @@ interface AvatarProps {
 export const Avatar: React.FC<AvatarProps> = ({
   uri,
   name,
-  size = 48,
+  size = moderateScale(48),
   isOnline,
   style,
 }) => {

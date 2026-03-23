@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { scale, verticalScale, moderateScale } from '@utils/responsive';
 import { Colors, Spacing, Typography, BorderRadius, Shadows } from '@constants/index';
 import { useTranslation } from '@hooks/useTranslation';
 import { Avatar, Card } from '@components/ui';
@@ -227,7 +228,7 @@ const styles = StyleSheet.create({
   },
   dayCell: {
     width: '14.28%',
-    height: 50,
+    height: verticalScale(50),
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: BorderRadius.md,
@@ -244,11 +245,11 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   eventDot: {
-    width: 4,
-    height: 4,
-    borderRadius: 2,
+    width: scale(4),
+    height: scale(4),
+    borderRadius: scale(2),
     backgroundColor: Colors.primary[500],
-    marginTop: 4,
+    marginTop: moderateScale(4),
   },
   eventDotSelected: {
     backgroundColor: Colors.white,
@@ -381,11 +382,11 @@ const styles = StyleSheet.create({
   },
   fab: {
     position: 'absolute',
-    bottom: 20,
-    right: 20,
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    bottom: verticalScale(20),
+    right: scale(20),
+    width: scale(60),
+    height: scale(60),
+    borderRadius: scale(30),
     backgroundColor: Colors.primary[800],
     alignItems: 'center',
     justifyContent: 'center',

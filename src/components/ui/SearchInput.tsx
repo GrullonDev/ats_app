@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, ViewStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Colors, BorderRadius, Spacing, Typography } from '@constants/index';
+import { scale, verticalScale, moderateScale } from '@utils/responsive';
+import { Colors, BorderRadius, Shadows, Spacing, Typography } from '@constants/index';
 
 interface SearchInputProps {
   value: string;
@@ -37,8 +38,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: BorderRadius.lg,
     paddingHorizontal: Spacing[4],
-    height: 48,
-    borderWidth: 1,
+    height: verticalScale(48),
+    borderWidth: moderateScale(1),
     borderColor: Colors.border,
   },
   icon: {

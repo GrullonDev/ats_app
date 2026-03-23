@@ -2,6 +2,8 @@
  * Tipografía del sistema ATS Mobile
  * Tamaños y pesos de fuente estandarizados
  */
+import { moderateScale } from '../utils/responsive';
+
 export const Typography = {
   // Familias de fuente
   fontFamily: {
@@ -12,16 +14,16 @@ export const Typography = {
   },
   // Tamaños (escala tipográfica)
   fontSize: {
-    xs: 11,
-    sm: 13,
-    base: 15,
-    md: 16,
-    lg: 18,
-    xl: 20,
-    '2xl': 24,
-    '3xl': 28,
-    '4xl': 32,
-    '5xl': 40,
+    xs: moderateScale(11),
+    sm: moderateScale(13),
+    base: moderateScale(15),
+    md: moderateScale(16),
+    lg: moderateScale(18),
+    xl: moderateScale(20),
+    '2xl': moderateScale(24),
+    '3xl': moderateScale(28),
+    '4xl': moderateScale(32),
+    '5xl': moderateScale(40),
   },
   // Alturas de línea
   lineHeight: {
@@ -44,17 +46,17 @@ export const Typography = {
  */
 export const Spacing = {
   0: 0,
-  1: 4,
-  2: 8,
-  3: 12,
-  4: 16,
-  5: 20,
-  6: 24,
-  7: 28,
-  8: 32,
-  10: 40,
-  12: 48,
-  16: 64,
+  1: moderateScale(4),
+  2: moderateScale(8),
+  3: moderateScale(12),
+  4: moderateScale(16),
+  5: moderateScale(20),
+  6: moderateScale(24),
+  7: moderateScale(28),
+  8: moderateScale(32),
+  10: moderateScale(40),
+  12: moderateScale(48),
+  16: moderateScale(64),
 } as const;
 
 /**
@@ -62,11 +64,11 @@ export const Spacing = {
  */
 export const BorderRadius = {
   none: 0,
-  sm: 4,
-  md: 8,
-  lg: 12,
-  xl: 16,
-  '2xl': 20,
+  sm: moderateScale(4),
+  md: moderateScale(8),
+  lg: moderateScale(12),
+  xl: moderateScale(16),
+  '2xl': moderateScale(20),
   full: 9999,
 } as const;
 

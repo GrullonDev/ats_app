@@ -1,5 +1,9 @@
 node_modules/
 .expo/
+.DS_Store
+._*
+.cache/
+dist/
 dist/
 build/
 *.jks

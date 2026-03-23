@@ -5,7 +5,8 @@ import {
   ViewStyle,
   TouchableOpacity,
 } from 'react-native';
-import { Colors, BorderRadius, Shadows } from '@constants/index';
+import { Colors, BorderRadius, Shadows, Spacing } from '@constants/index';
+import { moderateScale } from '@utils/responsive';
 
 interface CardProps {
   children: React.ReactNode;
@@ -42,6 +43,6 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: Colors.surface,
     borderRadius: BorderRadius.xl,
-    padding: 16,
+    padding: Spacing[4],
   },
 });

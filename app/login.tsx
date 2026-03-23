@@ -12,6 +12,7 @@ import {
   ActivityIndicator,
   Alert,
 } from 'react-native';
+import { scale, verticalScale, moderateScale } from '@/utils/responsive';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
@@ -39,7 +40,10 @@ export default function LoginScreen() {
   // Redirigir al dashboard si ya está autenticado
   useEffect(() => {
     if (isAuthenticated) {
-      router.replace('/(tabs)');
+      const timeout = setTimeout(() => {
+        router.replace('/(tabs)');
+      }, 1);
+      return () => clearTimeout(timeout);
     }
   }, [isAuthenticated, router]);
 
@@ -194,8 +198,8 @@ const styles = StyleSheet.create({
     marginBottom: Spacing[10],
   },
   logoContainer: {
-    width: 80,
-    height: 80,
+    width: scale(80),
+    height: scale(80),
     borderRadius: BorderRadius.xl,
     backgroundColor: Colors.primary[700],
     alignItems: 'center',
@@ -237,7 +241,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: Colors.border,
     paddingHorizontal: Spacing[3],
-    height: 56,
+    height: verticalScale(56),
   },
   inputIcon: {
     marginRight: Spacing[2],
@@ -265,7 +269,7 @@ const styles = StyleSheet.create({
 
   // --- Action Button ---
   loginBtn: {
-    height: 56,
+    height: verticalScale(56),
     backgroundColor: Colors.primary[700],
     borderRadius: BorderRadius.lg,
     alignItems: 'center',
