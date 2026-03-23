@@ -25,7 +25,12 @@ type BadgeVariant =
   | 'offered'
   | 'onboarding'
   | 'urgent'
-  | 'withdrawn';
+  | 'withdrawn'
+  | 'new_today'
+  | 'interview_today'
+  | 'awaiting_review'
+  | 'offer_pending'
+  | 'stalled';
 
 interface BadgeProps {
   label: string;
@@ -52,6 +57,11 @@ const BADGE_STYLES: Record<BadgeVariant, { bg: string; text: string }> = {
   onboarding: { bg: Colors.accent.greenLight, text: Colors.accent.green },
   urgent: { bg: Colors.accent.redLight, text: Colors.accent.red },
   withdrawn: { bg: Colors.gray[300], text: Colors.gray[700] },
+  new_today: { bg: Colors.accent.greenLight, text: Colors.accent.green },
+  interview_today: { bg: Colors.accent.orangeLight, text: Colors.accent.orange },
+  awaiting_review: { bg: Colors.accent.purpleLight, text: Colors.accent.purple },
+  offer_pending: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
+  stalled: { bg: Colors.gray[200], text: Colors.gray[700] },
 };
 
 /**

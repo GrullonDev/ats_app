@@ -44,17 +44,23 @@ export interface Applicant {
   name: string;
   email: string;
   phone?: string;
+  location?: string;
   avatar?: string;
+  department?: string;
+  isRemote?: boolean;
   jobId: string;
-  jobTitle?: string; // Título opcional del puesto para visualización
+  jobTitle?: string;
   status: ApplicantStatus;
   stage: HiringStage;
-  appliedDate: string; // ISO 8601
+  appliedDate: string;
   resumeUrl?: string;
-  score?: number; // 0-100 (interno)
-  rating?: number; // 0-5.0 (estrellas)
+  score?: number;
+  rating?: number;
+  matchScore?: number; // 0-5.0 score
   notes?: string;
   isOnline?: boolean;
+  lastActivityDate?: string;
+  urgency?: 'new_today' | 'interview_today' | 'awaiting_review' | 'offer_pending' | 'stalled';
 }
 
 export type ApplicantStatus =
@@ -62,6 +68,8 @@ export type ApplicantStatus =
   | 'applied'
   | 'screening'
   | 'interviewing'
+  | 'psychometric_test'
+  | 'selection'
   | 'offered'
   | 'hired'
   | 'rejected'
@@ -75,7 +83,6 @@ export type HiringStage =
   | 'selection'
   | 'offered'
   | 'hired'
-  | 'onboarding'
   | 'rejected'
   | 'withdrawn';
 

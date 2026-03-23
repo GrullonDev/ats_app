@@ -21,6 +21,7 @@ import { useAuthStore } from '@store/authStore';
 import { useATSStore } from '@store/atsStore';
 import type { Job, Applicant } from '@/types';
 import { MOCK_JOBS, MOCK_USER, MOCK_STATS, MOCK_APPLICANTS } from '@utils/mockData';
+import { verticalScale, moderateScale, scale } from '@utils/responsive';
 
 interface KPICardProps {
   label: string;
@@ -406,23 +407,21 @@ export const WelcomeScreen: React.FC = () => {
   // Datos basados en el estado para simulación
   const activeJobs = MOCK_JOBS.filter(j => j.status === 'active');
   const sortedPriorityJobs = [...activeJobs].sort((a, b) => {
-    const daysA = new Date(a.postedDate).getTime();
-    const daysB = new Date(b.postedDate).getTime();
-    return daysA - daysB; // Más antiguo primero (más días activos)
+    return new Date(a.postedDate).getTime() - new Date(b.postedDate).getTime(); // Más antiguo primero = más días activa
   });
 
-  const recentCandidates = [...MOCK_APPLICANTS].sort((a, b) => 
-    new Date(b.appliedDate).getTime() - new Date(a.appliedDate).getTime()
+  const allCandidates = [...MOCK_APPLICANTS].sort((a, b) => 
+    new Date(b.appliedDate).getTime() - new Date(a.appliedDate).getTime() // Más reciente primero
   );
   
-  const newsTodayCount = recentCandidates.filter(c => {
+  const newsTodayCount = allCandidates.filter(c => {
     const diff = Date.now() - new Date(c.appliedDate).getTime();
     return diff < 24 * 60 * 60 * 1000;
   }).length;
 
   const attentionJobs = [...activeJobs]
     .filter(j => j.applicantsCount > 15)
-    .sort((a, b) => b.applicantsCount - a.applicantsCount);
+    .sort((a, b) => b.applicantsCount - a.applicantsCount); // Mayor cantidad de candidatos primero
 
   // Determinar datos según estado del demo
   const stats = screenState === 'zero' ? { activeJobs: 0, totalApplicants: 0 } : { 
@@ -431,7 +430,7 @@ export const WelcomeScreen: React.FC = () => {
   };
 
   const displayJobs = screenState === 'normal' ? sortedPriorityJobs : [];
-  const displayCandidates = screenState === 'normal' ? recentCandidates.slice(0, 5) : [];
+  const displayCandidates = screenState === 'normal' ? allCandidates.slice(0, 5) : [];
   const displayAttention = screenState === 'normal' ? attentionJobs : [];
 
   // Modificar una vacante para que sea urgente en el mock
@@ -801,9 +800,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -1,
     right: -1,
-    width: 10,
-    height: 10,
-    borderRadius: 5,
+    width: moderateScale(10),
+    height: moderateScale(10),
+    borderRadius: moderateScale(5),
     backgroundColor: Colors.accent.red,
     borderWidth: 2,
     borderColor: Colors.surface,
@@ -827,8 +826,8 @@ const styles = StyleSheet.create({
     ...Shadows.sm,
   },
   filterBtn: {
-    width: 44,
-    height: 44,
+    width: moderateScale(44),
+    height: moderateScale(44),
     backgroundColor: Colors.surface,
     borderRadius: BorderRadius.lg,
     alignItems: 'center',
@@ -868,7 +867,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary[700],
   },
   filterChipText: {
-    fontSize: 12,
+    fontSize: moderateScale(12),
     fontWeight: Typography.fontWeight.bold,
     color: Colors.gray[600],
   },
@@ -894,7 +893,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
     borderRadius: BorderRadius.xl,
     padding: Spacing[4],
-    minHeight: 100,
+    minHeight: verticalScale(100),
     justifyContent: 'space-between',
     ...Shadows.sm,
   },
@@ -906,7 +905,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderRadius: BorderRadius.xl,
     padding: Spacing[4],
-    minHeight: 100,
+    minHeight: verticalScale(100),
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,
@@ -1018,8 +1017,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary[700],
   },
   quickActionIcon: {
-    width: 32,
-    height: 32,
+    width: moderateScale(32),
+    height: moderateScale(32),
     borderRadius: BorderRadius.md,
     backgroundColor: Colors.primary[50],
     alignItems: 'center',
@@ -1029,7 +1028,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.15)',
   },
   quickActionLabel: {
-    fontSize: 12,
+    fontSize: moderateScale(12),
     fontWeight: Typography.fontWeight.bold,
     color: Colors.textPrimary,
   },
@@ -1056,9 +1055,9 @@ const styles = StyleSheet.create({
      borderBottomColor: Colors.gray[50],
   },
   candidateAvatarSmall: {
-     width: 36,
-     height: 36,
-     borderRadius: 18,
+     width: moderateScale(36),
+     height: moderateScale(36),
+     borderRadius: moderateScale(18),
      backgroundColor: Colors.primary[50],
      alignItems: 'center',
      justifyContent: 'center',
@@ -1104,12 +1103,12 @@ const styles = StyleSheet.create({
      backgroundColor: Colors.accent.green,
   },
   stageTextSmall: {
-     fontSize: 10,
+     fontSize: moderateScale(10),
      color: Colors.textSecondary,
      fontWeight: Typography.fontWeight.medium,
   },
   timeTextSmall: {
-     fontSize: 10,
+     fontSize: moderateScale(10),
      color: Colors.textDisabled,
   },
 
@@ -1134,18 +1133,18 @@ const styles = StyleSheet.create({
      flex: 1,
   },
   attentionJobTitle: {
-     fontSize: 14,
-     fontWeight: Typography.fontWeight.bold,
-     color: Colors.textPrimary,
+    fontSize: moderateScale(14),
+    fontWeight: Typography.fontWeight.bold,
+    color: Colors.textPrimary,
   },
   attentionMeta: {
      flexDirection: 'row',
      alignItems: 'center',
-     gap: 4,
-     marginTop: 2,
+     gap: moderateScale(4),
+     marginTop: moderateScale(2),
   },
   attentionCount: {
-     fontSize: 11,
+     fontSize: moderateScale(11),
      color: Colors.textSecondary,
   },
   attentionActions: {
@@ -1236,10 +1235,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   jobTitle: {
-    fontSize: 15,
+    fontSize: moderateScale(15),
     fontWeight: Typography.fontWeight.bold,
     color: Colors.textPrimary,
-    marginBottom: 4,
+    marginBottom: moderateScale(4),
   },
   jobMetaSecondary: {
     flexDirection: 'row',
@@ -1247,16 +1246,16 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   jobDaysActive: {
-    fontSize: 10,
+    fontSize: moderateScale(10),
     color: Colors.textSecondary,
     fontWeight: Typography.fontWeight.medium,
   },
   jobMetaDot: {
-    fontSize: 8,
+    fontSize: moderateScale(8),
     color: Colors.textDisabled,
   },
   jobTotalApplicants: {
-    fontSize: 10,
+    fontSize: moderateScale(10),
     color: Colors.primary[600],
     fontWeight: Typography.fontWeight.bold,
   },
@@ -1289,9 +1288,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   avatarCircle: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
+    width: moderateScale(24),
+    height: moderateScale(24),
+    borderRadius: moderateScale(12),
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 2,
