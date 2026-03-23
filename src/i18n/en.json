@@ -22,10 +22,13 @@
     "selectLanguage": "Select Language",
     "other": "Other",
     "justNow": "Just now",
-    "yesterday": "Yesterday"
+    "yesterday": "Yesterday",
+    "hoursAgoShort": "{{count}}h",
+    "daysAgoShort": "{{count}}d",
+    "greeting": "Welcome back!",
+    "appFooter": "Recruitment Dashboard • Made with ❤️"
   },
   "welcome": {
-    "greeting": "Welcome back!",
     "hello": "Hello",
     "searchPlaceholder": "Search job openings...",
     "activeJobs": "Active Jobs",
@@ -96,30 +99,68 @@
     "calendar": "Calendar",
     "profile": "Profile"
   },
-    "profile": {
+  "profile": {
     "title": "Profile",
-    "role": "Role",
-    "department": "Department",
-    "email": "Email",
-    "phone": "Phone",
-    "settings": "SETTINGS",
-    "notifications": "NOTIFICATIONS",
+    "editAction": "Edit",
+    "settingsAction": "Settings",
+    "sections": {
+      "identity": "Identity",
+      "performance": "Performance Overview",
+      "preferences": "Preferences",
+      "account": "Account & Security",
+      "support": "Support & Info",
+      "dangerZone": "Danger Zone"
+    },
+    "identity": {
+      "editBtn": "Edit Profile",
+      "role": "Senior Recruiter",
+      "team": "Recruitment Team"
+    },
+    "stats": {
+      "jobsPosted": "Jobs Posted",
+      "candidatesReviewed": "Candidates Reviewed",
+      "interviewsConducted": "Interviews",
+      "successfulHires": "Successful Hires",
+      "thisMonth": "this month",
+      "thisWeek": "this week"
+    },
+    "options": {
+      "language": "Language",
+      "languageSub": "Choose your preferred language",
+      "appearance": "Appearance",
+      "appearanceSub": "Switch between light and dark mode",
+      "notifications": "Notifications",
+      "notificationsSub": "Control your app alerts",
+      "scheduleAlerts": "Schedule Alerts",
+      "scheduleAlertsSub": "Reminders for interviews",
+      "security": "Security",
+      "securitySub": "Password and authentication",
+      "activity": "Login Activity",
+      "activitySub": "Check your recent sessions",
+      "privacy": "Privacy",
+      "privacySub": "Manage your data sharing",
+      "help": "Help Center",
+      "helpSub": "FAQs and contact options",
+      "about": "About App",
+      "aboutSub": "Version, terms and privacy",
+      "version": "Version"
+    },
+    "notifications": {
+      "push": "Push Notifications",
+      "pushSub": "Get notified about new applicants",
+      "email": "Email Notifications",
+      "emailSub": "Receive updates by email",
+      "reminders": "Interview Reminders",
+      "remindersSub": "Alerts for scheduled interviews",
+      "updates": "Status Updates",
+      "updatesSub": "Information about pipeline changes"
+    },
     "logout": "Sign Out",
-    "editProfile": "Edit Profile",
-    "editProfileSub": "Update your personal information",
-    "preferences": "Preferences",
-    "preferencesSub": "Customize your experience",
-    "security": "Security",
-    "securitySub": "Password and authentication",
-    "push": "Push Notifications",
-    "pushSub": "Get notified about new applicants",
-    "emailDigest": "Email Digest",
-    "emailDigestSub": "Daily summary of activities",
-    "autoSchedule": "Auto-Schedule",
-    "autoScheduleSub": "Automatically schedule interviews",
-    "activityLog": "Activity Log",
-    "helpSupport": "Help & Support",
-    "about": "About"
+    "logoutConfirm": "Are you sure you want to sign out?",
+    "languages": {
+      "en": "English (US)",
+      "es": "Español (LATAM)"
+    }
   },
   "applicants": {
     "title": "Candidates",

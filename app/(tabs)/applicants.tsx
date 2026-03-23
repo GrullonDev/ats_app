@@ -14,6 +14,7 @@ import { Card, StatusBadge, Avatar, SearchInput } from '@components/ui';
 import { useTranslation } from '@hooks/useTranslation';
 import { MOCK_APPLICANTS } from '@utils/mockData';
 import { verticalScale, moderateScale, scale } from '@utils/responsive';
+import { getTimeAgo } from '@utils/dateUtils';
 import { Applicant, HiringStage } from '@/types';
 import { useRouter } from 'expo-router';
 
@@ -386,16 +387,7 @@ export default function ApplicantsTab() {
   );
 }
 
-function getTimeAgo(dateString: string, t: any) {
-  const now = new Date();
-  const date = new Date(dateString);
-  const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60));
-  
-  if (diffInHours < 1) return t('common.justNow') || 'Just now';
-  if (diffInHours < 24) return `${diffInHours}h`;
-  if (diffInHours < 48) return t('common.yesterday') || 'Yesterday';
-  return `${Math.floor(diffInHours / 24)}d`;
-}
+
 
 const styles = StyleSheet.create({
   container: {

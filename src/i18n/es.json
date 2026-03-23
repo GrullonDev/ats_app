@@ -22,10 +22,13 @@
     "selectLanguage": "Seleccionar idioma",
     "other": "Otros",
     "justNow": "Justo ahora",
-    "yesterday": "Ayer"
+    "yesterday": "Ayer",
+    "hoursAgoShort": "{{count}}h",
+    "daysAgoShort": "{{count}}d",
+    "greeting": "¡Bienvenido de vuelta!",
+    "appFooter": "Panel de Reclutamiento • Hecho con ❤️"
   },
   "welcome": {
-    "greeting": "¡Bienvenido de vuelta!",
     "hello": "Hola",
     "searchPlaceholder": "Buscar vacantes...",
     "activeJobs": "Empleos Activos",
@@ -60,9 +63,9 @@
     "latestToday": "Últimos aplicantes de hoy",
     "moreThan15": "Más de 15 candidatos cada una",
     "dailySummaryAttention": "{{count}} plazas necesitan tu atención hoy",
-    "priorityVacancies": "Priority Active Jobs",
+    "priorityVacancies": "Vacantes Prioritarias",
     "needsAttentionCount": "{{count}} Puestos",
-    "needsAttention": "Needs Attention Today",
+    "needsAttention": "Necesitan Atención Hoy",
     "needsAttentionAlt": "Necesitan Atención",
     "reviewNow": "Revisar Ahora",
     "daysActive": "{{count}} días activa",
@@ -96,30 +99,68 @@
     "calendar": "Calendario",
     "profile": "Perfil"
   },
-    "profile": {
+  "profile": {
     "title": "Perfil",
-    "role": "Cargo",
-    "department": "Departamento",
-    "email": "Correo electrónico",
-    "phone": "Teléfono",
-    "settings": "CONFIGURACIÓN",
-    "notifications": "NOTIFICACIONES",
+    "editAction": "Editar",
+    "settingsAction": "Configuración",
+    "sections": {
+      "identity": "Identidad",
+      "performance": "Resumen de Rendimiento",
+      "preferences": "Preferencias",
+      "account": "Cuenta y Seguridad",
+      "support": "Soporte e Información",
+      "dangerZone": "Zona de Peligro"
+    },
+    "identity": {
+      "editBtn": "Editar Perfil",
+      "role": "Recruiter Senior",
+      "team": "Equipo de Reclutamiento"
+    },
+    "stats": {
+      "jobsPosted": "Vacantes",
+      "candidatesReviewed": "Candidatos",
+      "interviewsConducted": "Entrevistas",
+      "successfulHires": "Contratados",
+      "thisMonth": "este mes",
+      "thisWeek": "esta semana"
+    },
+    "options": {
+      "language": "Idioma",
+      "languageSub": "Elige tu idioma preferido",
+      "appearance": "Apariencia",
+      "appearanceSub": "Cambia entre modo claro y oscuro",
+      "notifications": "Notificaciones",
+      "notificationsSub": "Controla tus alertas en la app",
+      "scheduleAlerts": "Alertas de Agenda",
+      "scheduleAlertsSub": "Recordatorios de entrevistas",
+      "security": "Seguridad",
+      "securitySub": "Contraseña y autenticación",
+      "activity": "Actividad de Inicio",
+      "activitySub": "Revisa tus sesiones recientes",
+      "privacy": "Privacidad",
+      "privacySub": "Gestiona tus datos compartidos",
+      "help": "Centro de Ayuda",
+      "helpSub": "Preguntas frecuentes y soporte",
+      "about": "Acerca de la App",
+      "aboutSub": "Versión, términos y privacidad",
+      "version": "Versión"
+    },
+    "notifications": {
+      "push": "Notificaciones Push",
+      "pushSub": "Avisos de nuevos candidatos",
+      "email": "Notificaciones por Email",
+      "emailSub": "Recibe actualizaciones por correo",
+      "reminders": "Recordatorios de Entrevista",
+      "remindersSub": "Alertas para entrevistas agendadas",
+      "updates": "Cambios de Estado",
+      "updatesSub": "Información sobre cambios en pipeline"
+    },
     "logout": "Cerrar Sesión",
-    "editProfile": "Editar Perfil",
-    "editProfileSub": "Actualiza tu información personal",
-    "preferences": "Preferencias",
-    "preferencesSub": "Personaliza tu experiencia",
-    "security": "Seguridad",
-    "securitySub": "Contraseña y autenticación",
-    "push": "Notificaciones Push",
-    "pushSub": "Recibe avisos de nuevos candidatos",
-    "emailDigest": "Resumen por Email",
-    "emailDigestSub": "Resumen diario de actividades",
-    "autoSchedule": "Auto-Agenda",
-    "autoScheduleSub": "Agenda entrevistas automáticamente",
-    "activityLog": "Registro de Actividad",
-    "helpSupport": "Ayuda y Soporte",
-    "about": "Acerca de"
+    "logoutConfirm": "¿Estás seguro de que quieres cerrar tu sesión?",
+    "languages": {
+      "en": "English (US)",
+      "es": "Español (LATAM)"
+    }
   },
   "applicants": {
     "title": "Candidatos",

@@ -22,6 +22,7 @@ i18n.locale = deviceLocale;
 
 // Si el idioma del dispositivo no está soportado, usar español
 i18n.enableFallback = true;
+i18n.missingBehavior = 'guess';
 
 /**
  * Cambia el idioma de la app en tiempo de ejecución

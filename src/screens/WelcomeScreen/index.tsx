@@ -22,6 +22,7 @@ import { useATSStore } from '@store/atsStore';
 import type { Job, Applicant } from '@/types';
 import { MOCK_JOBS, MOCK_USER, MOCK_STATS, MOCK_APPLICANTS } from '@utils/mockData';
 import { verticalScale, moderateScale, scale } from '@utils/responsive';
+import { getTimeAgo } from '@utils/dateUtils';
 
 interface KPICardProps {
   label: string;
@@ -292,7 +293,7 @@ const LatestCandidateRow = ({ candidate, onPress }: { candidate: Applicant, onPr
       <View style={styles.candidateInfoSmall}>
         <View style={styles.candidateRowTop}>
            <Text style={styles.candidateNameSmall}>{candidate.name}</Text>
-           <Text style={styles.timeTextSmall}>2h ago</Text>
+           <Text style={styles.timeTextSmall}>{getTimeAgo(candidate.appliedDate, t)}</Text>
         </View>
         <Text style={styles.candidateJobSmall} numberOfLines={1}>{candidate.jobTitle}</Text>
         <View style={styles.candidateStageSmall}>
@@ -318,7 +319,7 @@ const NeedsAttentionItem = ({ job, onPress }: { job: Job, onPress: () => void })
           <Text style={styles.attentionJobTitle} numberOfLines={1}>{job.title}</Text>
           <View style={styles.attentionMeta}>
              <Ionicons name="people-outline" size={12} color={Colors.textSecondary} />
-             <Text style={styles.attentionCount}>{job.applicantsCount} candidates</Text>
+             <Text style={styles.attentionCount}>{job.applicantsCount} {t('welcome.jobMetrics.applicants')}</Text>
           </View>
        </View>
        <View style={styles.attentionActions}>
@@ -374,20 +375,23 @@ interface StateViewProps {
   onRetry?: () => void;
 }
 
-const StateView: React.FC<StateViewProps> = ({ title, message, icon, onRetry }) => (
-  <View style={styles.stateView}>
-    <View style={styles.stateIconWrapper}>
-      <Ionicons name={icon as any} size={48} color={Colors.gray[300]} />
+const StateView: React.FC<StateViewProps> = ({ title, message, icon, onRetry }) => {
+  const { t } = useTranslation();
+  return (
+    <View style={styles.stateView}>
+      <View style={styles.stateIconWrapper}>
+        <Ionicons name={icon as any} size={48} color={Colors.gray[300]} />
+      </View>
+      <Text style={styles.stateTitle}>{title}</Text>
+      <Text style={styles.stateMessage}>{message}</Text>
+      {onRetry && (
+        <TouchableOpacity style={styles.retryBtn} onPress={onRetry}>
+          <Text style={styles.retryText}>{t('common.retry')}</Text>
+        </TouchableOpacity>
+      )}
     </View>
-    <Text style={styles.stateTitle}>{title}</Text>
-    <Text style={styles.stateMessage}>{message}</Text>
-    {onRetry && (
-      <TouchableOpacity style={styles.retryBtn} onPress={onRetry}>
-        <Text style={styles.retryText}>Retry</Text>
-      </TouchableOpacity>
-    )}
-  </View>
-);
+  );
+};
 
 // ─────────────────────────────────────────────
 // Pantalla principal: WelcomeScreen (Dashboard)
@@ -448,13 +452,6 @@ export const WelcomeScreen: React.FC = () => {
     return (
       <SafeAreaView style={styles.safeArea}>
         <DashboardSkeleton />
-        {/* Switcher para prototipo */}
-        <TouchableOpacity 
-          style={styles.stateSwitcher} 
-          onPress={() => setScreenState('normal')}
-        >
-          <Text style={{fontSize: 10, color: Colors.white}}>Simulate: Load Done</Text>
-        </TouchableOpacity>
       </SafeAreaView>
     );
   }
@@ -463,14 +460,7 @@ export const WelcomeScreen: React.FC = () => {
     <SafeAreaView style={styles.safeArea} edges={['top']}>
       <StatusBar style="dark" />
 
-      {/* Switcher de estados para el Prototipo (Solo desarrollo) */}
-      <View style={styles.demoControls}>
-        <TouchableOpacity onPress={() => setScreenState('loading')} style={styles.demoBtn}><Text style={styles.demoText}>L</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => setScreenState('empty')} style={styles.demoBtn}><Text style={styles.demoText}>Em</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => setScreenState('error')} style={styles.demoBtn}><Text style={styles.demoText}>Er</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => setScreenState('zero')} style={styles.demoBtn}><Text style={styles.demoText}>Z</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => setScreenState('normal')} style={styles.demoBtn}><Text style={styles.demoText}>N</Text></TouchableOpacity>
-      </View>
+
 
       <ScrollView
         style={styles.scrollView}
@@ -583,7 +573,7 @@ export const WelcomeScreen: React.FC = () => {
               
               <KPICard 
                 label={t('welcome.reviewPipeline')}
-                value="Pipeline"
+                value={t('applicants.stats.active')}
                 subtitle=""
                 icon="git-network"
                 variant="purple"
@@ -1358,38 +1348,6 @@ const styles = StyleSheet.create({
     fontSize: Typography.fontSize.sm,
   },
   
-  // demo controls
-  demoControls: {
-    position: 'absolute',
-    bottom: 120,
-    right: 20,
-    zIndex: 999,
-    flexDirection: 'row',
-    gap: 8,
-  },
-  demoBtn: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  demoText: {
-    color: 'white',
-    fontSize: 8,
-    fontWeight: 'bold',
-  },
-  stateSwitcher: {
-    position: 'absolute',
-    bottom: 100,
-    left: 20,
-    right: 20,
-    padding: 10,
-    backgroundColor: Colors.primary[700],
-    borderRadius: 10,
-    alignItems: 'center',
-  },
   avatarCountText: {
     fontSize: 8,
     fontWeight: Typography.fontWeight.bold,
