@@ -161,14 +161,14 @@ export default function ApplicantsTab() {
           
           <View style={styles.cardInfo}>
             <Text style={styles.applicantName} numberOfLines={1}>{item.name}</Text>
-            <Text style={styles.jobTitle} numberOfLines={1}>{job?.title || 'Unknown Position'}</Text>
+            <Text style={styles.jobTitle} numberOfLines={1}>{job?.title || t('applicants.unknownPosition')}</Text>
             <View style={styles.metaInfo}>
               <Text style={styles.timeAgo}>• {t('common.today')}</Text>
             </View>
           </View>
 
           <View style={styles.ratingContainer}>
-            <Text style={styles.ratingText}>⭐ {item.score ? (item.score/20).toFixed(1) : 'New'}</Text>
+            <Text style={styles.ratingText}>⭐ {item.score ? (item.score/20).toFixed(1) : t('applicants.ratingNew')}</Text>
           </View>
         </View>
 
@@ -352,10 +352,10 @@ export default function ApplicantsTab() {
             <Text style={styles.modalTitle}>{t('welcome.applicants')}</Text>
             
             <View style={styles.inputContainer}>
-              <Text style={styles.inputLabel}>{t('auth.username')}</Text>
+              <Text style={styles.inputLabel}>{t('applicants.fullNamePlaceholder')}</Text>
               <TextInput
                 style={styles.modalInput}
-                placeholder="Nombre completo"
+                placeholder={t('applicants.fullNamePlaceholder')}
                 value={newName}
                 onChangeText={setNewName}
               />

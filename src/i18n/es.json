@@ -35,7 +35,8 @@
     "newApplicants": "nuevos hoy",
     "scheduled": "programados",
     "justPosted": "Recién publicado",
-    "notifications": "Notificaciones"
+    "notifications": "Notificaciones",
+    "notificationAlert": "• Elena Beltrán aplicó para Senior UI/UX Designer\n• 3 entrevistas programadas para hoy"
   },
   "jobStatus": {
     "active": "ACTIVO",
@@ -93,6 +94,7 @@
     },
     "status": {
       "new": "NUEVO",
+      "review": "REVISIÓN",
       "screening": "REVISIÓN",
       "interviewing": "ENTREVISTA",
       "offered": "OFERTA",
@@ -104,7 +106,11 @@
     "screening_legacy": "En revisión",
     "interviewing_legacy": "Entrevistando",
     "hired_legacy": "Contratados",
-    "rejected_legacy": "Rechazados"
+    "rejected_legacy": "Rechazados",
+    "unknownPosition": "Posición desconocida",
+    "ratingNew": "Nuevo",
+    "fullNamePlaceholder": "Nombre completo",
+    "selectPosition": "Seleccionar posición"
   },
   "jobs": {
     "title": "Vacantes",
@@ -132,5 +138,28 @@
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "errorInvalid": "Usuario o contraseña incorrectos",
     "errorEmpty": "Por favor completa todos los campos"
+  },
+  "calendar": {
+    "title": "Calendario de Entrevistas",
+    "todaySchedule": "Agenda de Hoy",
+    "noEvents": "No hay entrevistas programadas para este día",
+    "addEvent": "Programar Entrevista",
+    "interviews": "entrevistas",
+    "interview": "entrevista",
+    "viewDay": "Día",
+    "viewWeek": "Semana",
+    "viewMonth": "Mes",
+    "interviewTypes": {
+      "technical": "Entrevista Técnica",
+      "hr": "Entrevista RRHH",
+      "video": "Video Llamada",
+      "onsite": "Entrevista Presencial"
+    },
+    "actions": {
+      "join": "Unirse a Llamada",
+      "reschedule": "Reprogramar",
+      "joiningCall": "Conectándose a la videollamada...",
+      "rescheduleSent": "Se ha enviado la solicitud de reprogramación al candidato."
+    }
   }
 }

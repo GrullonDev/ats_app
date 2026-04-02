@@ -226,7 +226,7 @@ export const WelcomeScreen: React.FC = () => {
   const handleNotificationPress = () => {
     Alert.alert(
       t('welcome.notifications'),
-      '• Elena Beltrán applied for Senior UI/UX Designer\n• 3 interviews scheduled for today',
+      t('welcome.notificationAlert'),
       [{ text: 'OK', style: 'cancel' }]
     );
   };
@@ -249,14 +249,13 @@ export const WelcomeScreen: React.FC = () => {
         {/* ── Header: saludo + notificaciones ── */}
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            {/* Avatar del usuario (Placeholder con estilo Figma) */}
+            {/* Avatar del usuario */}
             <View style={styles.headerAvatarContainer}>
               <Image 
                 source={{ uri: 'https://randomuser.me/api/portraits/men/46.jpg' }} 
                 style={styles.headerAvatarImage} 
               />
             </View>
-            {/* Saludo */}
             <View>
               <Text style={styles.headerGreeting}>{t('welcome.greeting')}</Text>
               <Text style={styles.headerName}>
@@ -265,30 +264,19 @@ export const WelcomeScreen: React.FC = () => {
             </View>
           </View>
 
-          {/* Botón de notificaciones */}
           <TouchableOpacity 
             style={styles.notificationBtn} 
             activeOpacity={0.8}
             onPress={handleNotificationPress}
           >
-            <Ionicons
-              name="notifications-outline"
-              size={24}
-              color={Colors.primary[700]}
-            />
-            {/* Badge de notificación */}
+            <Ionicons name="notifications-outline" size={24} color={Colors.primary[700]} />
             <View style={styles.notificationDot} />
           </TouchableOpacity>
         </View>
 
         {/* ── Barra de búsqueda ── */}
         <View style={styles.searchContainer}>
-          <Ionicons
-            name="search-outline"
-            size={20}
-            color={Colors.textSecondary}
-            style={styles.searchIcon}
-          />
+          <Ionicons name="search-outline" size={20} color={Colors.textSecondary} style={styles.searchIcon} />
           <TextInput
             style={styles.searchInput}
             placeholder={t('welcome.searchPlaceholder')}
@@ -303,7 +291,7 @@ export const WelcomeScreen: React.FC = () => {
           )}
         </View>
 
-        {/* ── Tarjetas de estadísticas (3 en fila) ── */}
+        {/* ── Tarjetas de estadísticas ── */}
         <View style={[styles.statsRow, isTablet && styles.statsRowTablet]}>
           <StatCard
             label={t('jobStatus.active')}

@@ -1,0 +1,269 @@
+0 verbose cli /opt/homebrew/Cellar/node/24.4.0/bin/node /opt/homebrew/bin/npm
+1 info using npm@11.10.1
+2 info using node@v24.4.0
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/.npmrc
+5 silly config load:file:/Users/jorgegrullon/.npmrc
+6 silly config load:file:/opt/homebrew/etc/npmrc
+7 verbose title npm install react-native-calendars expo-linear-gradient
+8 verbose argv "install" "react-native-calendars" "expo-linear-gradient" "--save-dev" "--cache" ".npm-cache" "--no-audit" "--no-fund"
+9 verbose logfile logs-max:10 dir:/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/.npm-cache/_logs/2026-04-02T04_40_39_499Z-
+10 verbose logfile /Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/.npm-cache/_logs/2026-04-02T04_40_39_499Z-debug-0.log
+11 warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+12 warn Unknown project config "node-linker". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+13 silly logfile done cleaning log files
+14 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+15 warn idealTree Removing dependencies.react-native-calendars in favor of devDependencies.react-native-calendars
+16 warn idealTree Removing dependencies.expo-linear-gradient in favor of devDependencies.expo-linear-gradient
+17 silly idealTree buildDeps
+18 silly fetch manifest react-native-calendars@*
+19 silly packumentCache full:https://registry.npmjs.org/react-native-calendars cache-miss
+20 http cache https://registry.npmjs.org/react-native-calendars 673ms (cache hit)
+21 silly packumentCache full:https://registry.npmjs.org/react-native-calendars set size:7256460 disposed:false
+22 silly fetch manifest expo-linear-gradient@*
+23 silly packumentCache full:https://registry.npmjs.org/expo-linear-gradient cache-miss
+24 http cache https://registry.npmjs.org/expo-linear-gradient 531ms (cache hit)
+25 silly packumentCache full:https://registry.npmjs.org/expo-linear-gradient set size:689383 disposed:false
+26 silly fetch manifest expo@~53.0.0
+27 silly packumentCache full:https://registry.npmjs.org/expo cache-miss
+28 http cache https://registry.npmjs.org/expo 620ms (cache hit)
+29 silly packumentCache full:https://registry.npmjs.org/expo set size:3586864 disposed:false
+30 silly fetch manifest @expo/dom-webview@*
+31 silly packumentCache full:https://registry.npmjs.org/@expo%2fdom-webview cache-miss
+32 http cache https://registry.npmjs.org/@expo%2fdom-webview 320ms (cache hit)
+33 silly packumentCache full:https://registry.npmjs.org/@expo%2fdom-webview set size:333503 disposed:false
+34 silly fetch manifest react@19.0.0
+35 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+36 http cache https://registry.npmjs.org/react 601ms (cache hit)
+37 silly packumentCache full:https://registry.npmjs.org/react set size:6581055 disposed:false
+38 silly fetch manifest react-native@0.79.6
+39 silly packumentCache full:https://registry.npmjs.org/react-native cache-miss
+40 http cache https://registry.npmjs.org/react-native 974ms (cache hit)
+41 silly packumentCache full:https://registry.npmjs.org/react-native set size:15053993 disposed:false
+42 silly fetch manifest @types/react@~19.0.10
+43 silly packumentCache full:https://registry.npmjs.org/@types%2freact cache-miss
+44 http cache https://registry.npmjs.org/@types%2freact 636ms (cache hit)
+45 silly packumentCache full:https://registry.npmjs.org/@types%2freact set size:2588964 disposed:false
+46 silly fetch manifest @expo/metro-runtime@*
+47 silly packumentCache full:https://registry.npmjs.org/@expo%2fmetro-runtime cache-miss
+48 http cache https://registry.npmjs.org/@expo%2fmetro-runtime 313ms (cache hit)
+49 silly packumentCache full:https://registry.npmjs.org/@expo%2fmetro-runtime set size:599913 disposed:false
+50 silly fetch manifest react-dom@*
+51 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+52 http fetch GET 200 https://registry.npmjs.org/react-dom 4206ms (cache miss)
+53 silly packumentCache full:https://registry.npmjs.org/react-dom set size:undefined disposed:false
+54 silly fetch manifest react@^19.2.4
+55 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+56 http cache https://registry.npmjs.org/react 708ms (cache hit)
+57 silly packumentCache full:https://registry.npmjs.org/react set size:6581055 disposed:false
+58 silly fetch manifest react-native-webview@*
+59 silly packumentCache full:https://registry.npmjs.org/react-native-webview cache-miss
+60 http cache https://registry.npmjs.org/react-native-webview 354ms (cache hit)
+61 silly packumentCache full:https://registry.npmjs.org/react-native-webview set size:1355349 disposed:false
+62 silly placeDep ROOT expo-linear-gradient@55.0.9 OK for: ats-mobile@1.0.0 want: *
+63 silly placeDep ROOT react-native-calendars@1.1314.0 OK for: ats-mobile@1.0.0 want: *
+64 silly fetch manifest xdate@^0.8.0
+65 silly packumentCache full:https://registry.npmjs.org/xdate cache-miss
+66 silly fetch manifest recyclerlistview@^4.0.0
+67 silly packumentCache full:https://registry.npmjs.org/recyclerlistview cache-miss
+68 silly fetch manifest react-native-swipe-gestures@^1.0.5
+69 silly packumentCache full:https://registry.npmjs.org/react-native-swipe-gestures cache-miss
+70 silly fetch manifest moment@^2.29.4
+71 silly packumentCache full:https://registry.npmjs.org/moment cache-miss
+72 http cache https://registry.npmjs.org/xdate 150ms (cache hit)
+73 silly packumentCache full:https://registry.npmjs.org/xdate set size:7240 disposed:false
+74 http cache https://registry.npmjs.org/recyclerlistview 229ms (cache hit)
+75 silly packumentCache full:https://registry.npmjs.org/recyclerlistview set size:324717 disposed:false
+76 http cache https://registry.npmjs.org/react-native-swipe-gestures 584ms (cache hit)
+77 silly packumentCache full:https://registry.npmjs.org/react-native-swipe-gestures set size:17197 disposed:false
+78 http cache https://registry.npmjs.org/moment 586ms (cache hit)
+79 silly packumentCache full:https://registry.npmjs.org/moment set size:241531 disposed:false
+80 silly fetch manifest ajv@^8.18.0
+81 silly packumentCache full:https://registry.npmjs.org/ajv cache-miss
+82 http cache https://registry.npmjs.org/ajv 93ms (cache hit)
+83 silly packumentCache full:https://registry.npmjs.org/ajv set size:1120197 disposed:false
+84 silly placeDep ROOT ajv@8.18.0 KEEP for: @eslint/eslintrc@2.1.4 want: ^8.18.0
+85 silly fetch manifest expo-constants@*
+86 silly packumentCache full:https://registry.npmjs.org/expo-constants cache-miss
+87 http cache https://registry.npmjs.org/expo-constants 170ms (cache hit)
+88 silly packumentCache full:https://registry.npmjs.org/expo-constants set size:933860 disposed:false
+89 silly fetch manifest expo@*
+90 silly packumentCache full:https://registry.npmjs.org/expo cache-miss
+91 http cache https://registry.npmjs.org/expo 411ms (cache hit)
+92 silly packumentCache full:https://registry.npmjs.org/expo set size:3586864 disposed:false
+93 silly fetch manifest react@*
+94 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+95 http cache https://registry.npmjs.org/react 225ms (cache hit)
+96 silly packumentCache full:https://registry.npmjs.org/react set size:6581055 disposed:false
+97 silly fetch manifest react-native@*
+98 silly packumentCache full:https://registry.npmjs.org/react-native cache-miss
+99 http cache https://registry.npmjs.org/react-native 996ms (cache hit)
+100 silly packumentCache full:https://registry.npmjs.org/react-native set size:15053993 disposed:false
+101 silly fetch manifest @types/react@^19.1.1
+102 silly packumentCache full:https://registry.npmjs.org/@types%2freact cache-miss
+103 http cache https://registry.npmjs.org/@types%2freact 260ms (cache hit)
+104 silly packumentCache full:https://registry.npmjs.org/@types%2freact set size:2588964 disposed:false
+105 silly fetch manifest @expo/metro-runtime@5.0.5
+106 silly packumentCache full:https://registry.npmjs.org/@expo%2fmetro-runtime cache-hit
+107 silly placeDep ROOT expo-constants@55.0.9 KEEP for: expo-router@5.1.11 want: *
+108 warn ERESOLVE overriding peer dependency {
+108 warn ERESOLVE   code: 'ERESOLVE',
+108 warn ERESOLVE   edge: {
+108 warn ERESOLVE     type: 'peer',
+108 warn ERESOLVE     name: 'expo-constants',
+108 warn ERESOLVE     spec: '*',
+108 warn ERESOLVE     error: 'PEER LOCAL',
+108 warn ERESOLVE     from: {
+108 warn ERESOLVE       name: 'expo-router',
+108 warn ERESOLVE       version: '5.1.11',
+108 warn ERESOLVE       location: 'node_modules/expo-router',
+108 warn ERESOLVE       isWorkspace: false,
+108 warn ERESOLVE       dependents: [Array]
+108 warn ERESOLVE     }
+108 warn ERESOLVE   },
+108 warn ERESOLVE   dep: {
+108 warn ERESOLVE     name: 'expo-constants',
+108 warn ERESOLVE     version: '55.0.9',
+108 warn ERESOLVE     whileInstalling: {
+108 warn ERESOLVE       name: 'expo-router',
+108 warn ERESOLVE       version: '5.1.11',
+108 warn ERESOLVE       path: '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/expo-router'
+108 warn ERESOLVE     },
+108 warn ERESOLVE     location: 'node_modules/expo-constants',
+108 warn ERESOLVE     isWorkspace: false,
+108 warn ERESOLVE     dependents: [ [Object] ]
+108 warn ERESOLVE   },
+108 warn ERESOLVE   force: false,
+108 warn ERESOLVE   isMine: true,
+108 warn ERESOLVE   strictPeerDeps: false,
+108 warn ERESOLVE   current: {
+108 warn ERESOLVE     name: 'expo-constants',
+108 warn ERESOLVE     version: '55.0.9',
+108 warn ERESOLVE     location: 'node_modules/expo-router/node_modules/expo-constants',
+108 warn ERESOLVE     isWorkspace: false,
+108 warn ERESOLVE     dependents: []
+108 warn ERESOLVE   }
+108 warn ERESOLVE }
+109 silly fetch manifest lightningcss-darwin-x64@1.27.0
+110 silly packumentCache full:https://registry.npmjs.org/lightningcss-darwin-x64 cache-miss
+111 http cache https://registry.npmjs.org/lightningcss-darwin-x64 165ms (cache hit)
+112 silly packumentCache full:https://registry.npmjs.org/lightningcss-darwin-x64 set size:78694 disposed:false
+113 silly fetch manifest lightningcss-linux-x64-gnu@1.27.0
+114 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-x64-gnu cache-miss
+115 http cache https://registry.npmjs.org/lightningcss-linux-x64-gnu 160ms (cache hit)
+116 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-x64-gnu set size:80105 disposed:false
+117 silly fetch manifest lightningcss-win32-x64-msvc@1.27.0
+118 silly packumentCache full:https://registry.npmjs.org/lightningcss-win32-x64-msvc cache-miss
+119 http cache https://registry.npmjs.org/lightningcss-win32-x64-msvc 132ms (cache hit)
+120 silly packumentCache full:https://registry.npmjs.org/lightningcss-win32-x64-msvc set size:79645 disposed:false
+121 silly fetch manifest lightningcss-win32-arm64-msvc@1.27.0
+122 silly packumentCache full:https://registry.npmjs.org/lightningcss-win32-arm64-msvc cache-miss
+123 http cache https://registry.npmjs.org/lightningcss-win32-arm64-msvc 161ms (cache hit)
+124 silly packumentCache full:https://registry.npmjs.org/lightningcss-win32-arm64-msvc set size:26629 disposed:false
+125 silly fetch manifest lightningcss-linux-arm64-gnu@1.27.0
+126 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm64-gnu cache-miss
+127 http cache https://registry.npmjs.org/lightningcss-linux-arm64-gnu 371ms (cache hit)
+128 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm64-gnu set size:80669 disposed:false
+129 silly fetch manifest lightningcss-linux-arm-gnueabihf@1.27.0
+130 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf cache-miss
+131 http cache https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf 287ms (cache hit)
+132 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf set size:80903 disposed:false
+133 silly fetch manifest lightningcss-linux-arm64-musl@1.27.0
+134 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm64-musl cache-miss
+135 http cache https://registry.npmjs.org/lightningcss-linux-arm64-musl 313ms (cache hit)
+136 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-arm64-musl set size:80887 disposed:false
+137 silly fetch manifest lightningcss-linux-x64-musl@1.27.0
+138 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-x64-musl cache-miss
+139 http cache https://registry.npmjs.org/lightningcss-linux-x64-musl 367ms (cache hit)
+140 silly packumentCache full:https://registry.npmjs.org/lightningcss-linux-x64-musl set size:80313 disposed:false
+141 silly fetch manifest lightningcss-freebsd-x64@1.27.0
+142 silly packumentCache full:https://registry.npmjs.org/lightningcss-freebsd-x64 cache-miss
+143 http cache https://registry.npmjs.org/lightningcss-freebsd-x64 212ms (cache hit)
+144 silly packumentCache full:https://registry.npmjs.org/lightningcss-freebsd-x64 set size:42877 disposed:false
+145 silly placeDep ROOT lightningcss-darwin-x64@1.27.0 OK for: lightningcss@1.27.0 want: 1.27.0
+146 silly placeDep ROOT lightningcss-freebsd-x64@1.27.0 OK for: lightningcss@1.27.0 want: 1.27.0
+147 silly placeDep ROOT lightningcss-linux-arm-gnueabihf@1.27.0 OK for: lightningcss@1.27.0 want: 1.27.0
+148 silly placeDep ROOT lightningcss-linux-arm64-gnu@1.27.0 OK for: lightningcss@1.27.0 want: 1.27.0
+149 silly placeDep ROOT lightningcss-linux-arm64-musl@1.27.0 OK for: lightningcss@1.27.0 want: 1.27.0
+150 silly placeDep ROOT lightningcss-linux-x64-gnu@1.27.0 OK for: lightningcss@1.27.0 want: 1.27.0
+151 silly placeDep ROOT lightningcss-linux-x64-musl@1.27.0 OK for: lightningcss@1.27.0 want: 1.27.0
+152 silly placeDep ROOT lightningcss-win32-arm64-msvc@1.27.0 OK for: lightningcss@1.27.0 want: 1.27.0
+153 silly placeDep ROOT lightningcss-win32-x64-msvc@1.27.0 OK for: lightningcss@1.27.0 want: 1.27.0
+154 silly fetch manifest react@>= 15.2.1
+155 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+156 http cache https://registry.npmjs.org/react 376ms (cache hit)
+157 silly packumentCache full:https://registry.npmjs.org/react set size:6581055 disposed:false
+158 silly fetch manifest react-native@>= 0.30.0
+159 silly packumentCache full:https://registry.npmjs.org/react-native cache-miss
+160 http cache https://registry.npmjs.org/react-native 718ms (cache hit)
+161 silly packumentCache full:https://registry.npmjs.org/react-native set size:15053993 disposed:false
+162 silly placeDep ROOT moment@2.30.1 OK for: react-native-calendars@1.1314.0 want: ^2.29.4
+163 silly placeDep ROOT react-native-swipe-gestures@1.0.5 OK for: react-native-calendars@1.1314.0 want: ^1.0.5
+164 silly placeDep ROOT recyclerlistview@4.2.3 OK for: react-native-calendars@1.1314.0 want: ^4.0.0
+165 silly placeDep ROOT xdate@0.8.3 OK for: react-native-calendars@1.1314.0 want: ^0.8.0
+166 silly fetch manifest ts-object-utils@0.0.5
+167 silly packumentCache full:https://registry.npmjs.org/ts-object-utils cache-miss
+168 http cache https://registry.npmjs.org/ts-object-utils 150ms (cache hit)
+169 silly packumentCache full:https://registry.npmjs.org/ts-object-utils set size:8916 disposed:false
+170 silly placeDep ROOT ts-object-utils@0.0.5 OK for: recyclerlistview@4.2.3 want: 0.0.5
+171 silly reify mark retired [
+171 silly reify   '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/eslint/node_modules/ajv'
+171 silly reify ]
+172 silly reify mark retired [
+172 silly reify   '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/eslint/node_modules/json-schema-traverse'
+172 silly reify ]
+173 silly reify mark retired [
+173 silly reify   '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/uri-js'
+173 silly reify ]
+174 silly reify mark retired [
+174 silly reify   '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/@eslint/eslintrc/node_modules/ajv'
+174 silly reify ]
+175 silly reify mark retired [
+175 silly reify   '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/@eslint/eslintrc/node_modules/json-schema-traverse'
+175 silly reify ]
+176 silly reify moves {
+176 silly reify   '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/eslint/node_modules/ajv': '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/eslint/node_modules/.ajv-fNHGNjBj',
+176 silly reify   '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/eslint/node_modules/json-schema-traverse': '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/eslint/node_modules/.json-schema-traverse-LAR2CbV9',
+176 silly reify   '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/uri-js': '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/.uri-js-Ya7GzaKY',
+176 silly reify   '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/@eslint/eslintrc/node_modules/ajv': '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/@eslint/eslintrc/node_modules/.ajv-atR5YpTR',
+176 silly reify   '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/@eslint/eslintrc/node_modules/json-schema-traverse': '/Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app/node_modules/@eslint/eslintrc/node_modules/.json-schema-traverse-nZbZjbUZ'
+176 silly reify }
+177 http cache recyclerlistview@https://registry.npmjs.org/recyclerlistview/-/recyclerlistview-4.2.3.tgz 0ms (cache hit)
+178 http cache react-native-swipe-gestures@https://registry.npmjs.org/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz 0ms (cache hit)
+179 http cache react-native-calendars@https://registry.npmjs.org/react-native-calendars/-/react-native-calendars-1.1314.0.tgz 0ms (cache hit)
+180 http cache xdate@https://registry.npmjs.org/xdate/-/xdate-0.8.3.tgz 0ms (cache hit)
+181 http cache ts-object-utils@https://registry.npmjs.org/ts-object-utils/-/ts-object-utils-0.0.5.tgz 0ms (cache hit)
+182 http cache expo-linear-gradient@https://registry.npmjs.org/expo-linear-gradient/-/expo-linear-gradient-55.0.9.tgz 0ms (cache hit)
+183 silly tarball no local data for recyclerlistview@https://registry.npmjs.org/recyclerlistview/-/recyclerlistview-4.2.3.tgz. Extracting by manifest.
+184 http cache moment@https://registry.npmjs.org/moment/-/moment-2.30.1.tgz 0ms (cache hit)
+185 silly tarball no local data for react-native-swipe-gestures@https://registry.npmjs.org/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz. Extracting by manifest.
+186 silly tarball no local data for react-native-calendars@https://registry.npmjs.org/react-native-calendars/-/react-native-calendars-1.1314.0.tgz. Extracting by manifest.
+187 silly tarball no local data for xdate@https://registry.npmjs.org/xdate/-/xdate-0.8.3.tgz. Extracting by manifest.
+188 silly tarball no local data for ts-object-utils@https://registry.npmjs.org/ts-object-utils/-/ts-object-utils-0.0.5.tgz. Extracting by manifest.
+189 silly tarball no local data for expo-linear-gradient@https://registry.npmjs.org/expo-linear-gradient/-/expo-linear-gradient-55.0.9.tgz. Extracting by manifest.
+190 silly tarball no local data for moment@https://registry.npmjs.org/moment/-/moment-2.30.1.tgz. Extracting by manifest.
+191 http fetch GET 200 https://registry.npmjs.org/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz 1986ms (cache miss)
+192 http fetch GET 200 https://registry.npmjs.org/xdate/-/xdate-0.8.3.tgz 2525ms (cache miss)
+193 http fetch GET 200 https://registry.npmjs.org/ts-object-utils/-/ts-object-utils-0.0.5.tgz 2721ms (cache miss)
+194 http fetch GET 200 https://registry.npmjs.org/expo-linear-gradient/-/expo-linear-gradient-55.0.9.tgz 12301ms (cache miss)
+195 http fetch GET 200 https://registry.npmjs.org/react-native-calendars/-/react-native-calendars-1.1314.0.tgz 22520ms (cache miss)
+196 http fetch GET 200 https://registry.npmjs.org/moment/-/moment-2.30.1.tgz 38220ms (cache miss)
+197 http fetch GET 200 https://registry.npmjs.org/recyclerlistview/-/recyclerlistview-4.2.3.tgz 39039ms (cache miss)
+198 silly ADD node_modules/ts-object-utils
+199 silly ADD node_modules/xdate
+200 silly ADD node_modules/recyclerlistview
+201 silly ADD node_modules/react-native-swipe-gestures
+202 silly ADD node_modules/moment
+203 silly ADD node_modules/react-native-calendars
+204 silly ADD node_modules/expo-linear-gradient
+205 silly REMOVE node_modules/@eslint/eslintrc/node_modules/json-schema-traverse
+206 silly REMOVE node_modules/@eslint/eslintrc/node_modules/ajv
+207 silly REMOVE node_modules/uri-js
+208 silly REMOVE node_modules/eslint/node_modules/json-schema-traverse
+209 silly REMOVE node_modules/eslint/node_modules/ajv
+210 verbose cwd /Volumes/WorkDiskDev/DevTools/react_native_projects/apps/ats_app
+211 verbose os Darwin 25.4.0
+212 verbose node v24.4.0
+213 verbose npm  v11.10.1
+214 verbose exit 0
+215 info ok

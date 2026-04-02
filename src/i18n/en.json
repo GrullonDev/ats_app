@@ -35,7 +35,8 @@
     "newApplicants": "new today",
     "scheduled": "scheduled",
     "justPosted": "Just posted",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "notificationAlert": "• Elena Beltrán applied for Senior UI/UX Designer\n• 3 interviews scheduled for today"
   },
   "jobStatus": {
     "active": "ACTIVE",
@@ -93,6 +94,7 @@
     },
     "status": {
       "new": "NEW",
+      "review": "REVIEW",
       "screening": "SCREENING",
       "interviewing": "INTERVIEW",
       "offered": "OFFERED",
@@ -104,7 +106,11 @@
     "screening_legacy": "Screening",
     "interviewing_legacy": "Interviewing",
     "hired_legacy": "Hired",
-    "rejected_legacy": "Rejected"
+    "rejected_legacy": "Rejected",
+    "unknownPosition": "Unknown Position",
+    "ratingNew": "New",
+    "fullNamePlaceholder": "Full Name",
+    "selectPosition": "Select position"
   },
   "jobs": {
     "title": "Jobs",
@@ -132,5 +138,28 @@
     "forgotPassword": "Forgot your password?",
     "errorInvalid": "Invalid username or password",
     "errorEmpty": "Please fill in all fields"
+  },
+  "calendar": {
+    "title": "Interview Calendar",
+    "todaySchedule": "Today's Schedule",
+    "noEvents": "No interviews scheduled for this day",
+    "addEvent": "Schedule Interview",
+    "interviews": "interviews",
+    "interview": "interview",
+    "viewDay": "Day",
+    "viewWeek": "Week",
+    "viewMonth": "Month",
+    "interviewTypes": {
+      "technical": "Technical Interview",
+      "hr": "HR Interview",
+      "video": "Video Call",
+      "onsite": "Onsite Interview"
+    },
+    "actions": {
+      "join": "Join Meeting",
+      "reschedule": "Reschedule",
+      "joiningCall": "Connecting to the meeting...",
+      "rescheduleSent": "Reschedule request has been sent to the candidate."
+    }
   }
 }
