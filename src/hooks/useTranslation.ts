@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useLanguageStore } from '@store/languageStore';
 import i18n from '@i18n/index';
-import type { SupportedLanguage } from '@types/index';
+import type { SupportedLanguage } from '@/types/index';
 
 /**
  * Hook para acceder a las traducciones y el idioma actual.

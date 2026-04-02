@@ -59,7 +59,7 @@ export const InterviewCard: React.FC<InterviewCardProps> = ({
         </View>
         <StatusBadge 
           label={t(`applicants.status.${status}`).toUpperCase()} 
-          variant={status === 'interviewing' ? 'interviewing' : status} 
+          variant={status as any} 
         />
       </View>
 

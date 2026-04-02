@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { changeLanguage, getCurrentLocale } from '@i18n/index';
-import type { SupportedLanguage } from '@types';
+import type { SupportedLanguage } from '@/types/index';
 
 interface LanguageState {
   /** Idioma activo de la aplicación */

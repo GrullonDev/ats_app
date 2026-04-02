@@ -74,7 +74,20 @@
     "thisMonth": "este mes",
     "updatePersonalInfo": "Actualiza tu información personal",
     "customizeExperience": "Personaliza tu experiencia",
-    "passwordAuth": "Contraseña y autenticación"
+    "passwordAuth": "Contraseña y autenticación",
+    "personalInfo": "Información Personal",
+    "accountSettings": "Ajustes de Cuenta",
+    "appSettings": "Ajustes de Aplicación",
+    "helpAndSupport": "Ayuda y Soporte",
+    "aboutApp": "Acerca de la App",
+    "version": "Versión",
+    "saveChanges": "Guardar Cambios",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "jobTitle": "Cargo",
+    "notificationsEnabled": "Notificaciones habilitadas",
+    "darkMode": "Modo Oscuro",
+    "securityDesc": "Gestiona tu contraseña y seguridad"
   },
   "applicants": {
     "title": "Aplicantes",

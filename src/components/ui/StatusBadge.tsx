@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Colors, BorderRadius, Shadows, Typography } from '@constants/index';
 
-type BadgeVariant = 'active' | 'interviewing' | 'new' | 'closed' | 'paused' | 'draft' | 'hired' | 'rejected';
+type BadgeVariant = 'active' | 'interviewing' | 'new' | 'closed' | 'paused' | 'draft' | 'hired' | 'rejected' | 'review' | 'screening';
 
 interface BadgeProps {
   label: string;
@@ -28,6 +28,8 @@ const BADGE_STYLES: Record<BadgeVariant, { bg: string; text: string }> = {
   draft: { bg: Colors.gray[100], text: Colors.gray[500] },
   hired: { bg: Colors.accent.greenLight, text: Colors.accent.green },
   rejected: { bg: Colors.accent.redLight, text: Colors.accent.red },
+  review: { bg: Colors.gray[200], text: Colors.gray[600] },
+  screening: { bg: Colors.accent.purpleLight, text: Colors.accent.purple },
 };
 
 /**
