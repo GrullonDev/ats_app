@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   View,
   Text,
@@ -8,10 +8,13 @@ import {
   Image,
   TextInput,
   Platform,
+  useWindowDimensions,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
+import { useRouter } from 'expo-router';
 
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '@constants/index';
 import { Card } from '@components/ui/Card';
@@ -20,7 +23,6 @@ import { useTranslation } from '@hooks/useTranslation';
 import { useAuthStore } from '@store/authStore';
 import { useATSStore } from '@store/atsStore';
 import type { Job, JobStatus } from '@/types';
-import { MOCK_JOBS, MOCK_USER, MOCK_STATS } from '@utils/mockData';
 
 // ─────────────────────────────────────────────
 // Sub-componente: Tarjeta de estadística
@@ -29,7 +31,6 @@ interface StatCardProps {
   label: string;
   value: number | string;
   subtitle?: string;
-  icon?: string;
   highlight?: boolean;
   growthPercent?: number;
 }
@@ -43,15 +44,13 @@ const StatCard: React.FC<StatCardProps> = ({
 }) => {
   return (
     <View style={[styles.statCard, highlight && styles.statCardHighlight]}>
-      {highlight && (
-        <Text style={styles.statCardLabel}>{label}</Text>
-      )}
+      <Text style={[styles.statCardLabel, highlight && styles.statCardLabelHighlight]}>
+        {label}
+      </Text>
       <Text style={[styles.statValue, highlight && styles.statValueHighlight]}>
         {value}
       </Text>
-      {!highlight && (
-        <Text style={styles.statCardLabel}>{label}</Text>
-      )}
+      
       {growthPercent !== undefined && (
         <View style={styles.growthRow}>
           <Ionicons
@@ -62,8 +61,11 @@ const StatCard: React.FC<StatCardProps> = ({
           <Text style={styles.growthText}>+{growthPercent}%</Text>
         </View>
       )}
-      {subtitle && !growthPercent && (
-        <Text style={styles.statSubtitle}>{subtitle}</Text>
+      
+      {subtitle && (
+        <Text style={[styles.statSubtitle, highlight && styles.statSubtitleHighlight]}>
+          {subtitle}
+        </Text>
       )}
     </View>
   );
@@ -75,7 +77,6 @@ const StatCard: React.FC<StatCardProps> = ({
 interface JobCardProps {
   job: Job;
   onPress?: () => void;
-  key?: string | number;
 }
 
 const JobCard = ({ job, onPress }: JobCardProps) => {
@@ -121,7 +122,7 @@ const JobCard = ({ job, onPress }: JobCardProps) => {
 
       {/* Departamento y ubicación */}
       <View style={styles.jobMeta}>
-        <Ionicons name="location-outline" size={13} color={Colors.textSecondary} />
+        <Ionicons name="location-outline" size={14} color={Colors.textSecondary} />
         <Text style={styles.jobMetaText}>
           {job.department} • {job.location}
         </Text>
@@ -130,8 +131,8 @@ const JobCard = ({ job, onPress }: JobCardProps) => {
       {/* Footer: Avatares/íconos + Conteo */}
       <View style={styles.jobFooter}>
         <ApplicantAvatarStack
-          count={job.applicantsCount > 4 ? job.applicantsCount - 4 : undefined}
-          filledSpots={Math.min(job.applicantsCount, 4)}
+          count={job.applicantsCount > 3 ? job.applicantsCount - 3 : undefined}
+          filledSpots={Math.min(job.applicantsCount, 3)}
         />
         <View style={styles.jobCountContainer}>
           <Text style={styles.jobApplicantsCount}>
@@ -152,11 +153,10 @@ interface ApplicantAvatarStackProps {
   count?: number; // Número adicional (+23, etc.)
 }
 
-const AVATAR_COLORS = [
-  Colors.accent.blue,
-  Colors.accent.orange,
-  Colors.accent.purple,
-  Colors.accent.green,
+const AVATAR_PLACEHOLDERS = [
+  'https://randomuser.me/api/portraits/women/44.jpg',
+  'https://randomuser.me/api/portraits/men/32.jpg',
+  'https://randomuser.me/api/portraits/women/68.jpg',
 ];
 
 const ApplicantAvatarStack: React.FC<ApplicantAvatarStackProps> = ({
@@ -172,15 +172,17 @@ const ApplicantAvatarStack: React.FC<ApplicantAvatarStackProps> = ({
           key={index}
           style={[
             styles.avatarCircle,
-            { backgroundColor: AVATAR_COLORS[index % AVATAR_COLORS.length] },
-            { marginLeft: index === 0 ? 0 : -8 },
+            { marginLeft: index === 0 ? 0 : -10 },
           ]}
         >
-          <Ionicons name="person" size={10} color={Colors.white} />
+          <Image 
+            source={{ uri: AVATAR_PLACEHOLDERS[index % AVATAR_PLACEHOLDERS.length] }} 
+            style={styles.avatarImage} 
+          />
         </View>
       ))}
       {count !== undefined && (
-        <View style={[styles.avatarCircle, styles.avatarCount, { marginLeft: -8 }]}>
+        <View style={[styles.avatarCircle, styles.avatarCount, { marginLeft: -10 }]}>
           <Text style={styles.avatarCountText}>+{count}</Text>
         </View>
       )}
@@ -193,12 +195,44 @@ const ApplicantAvatarStack: React.FC<ApplicantAvatarStackProps> = ({
 // ─────────────────────────────────────────────
 export const WelcomeScreen: React.FC = () => {
   const { t } = useTranslation();
+  const router = useRouter();
+  const { width } = useWindowDimensions();
+  const [searchQuery, setSearchQuery] = useState('');
 
-  // En producción esto vendría del AuthStore
-  const { user: authUser } = useAuthStore();
-  const user = authUser || MOCK_USER;
-  const stats = MOCK_STATS;
-  const jobs = MOCK_JOBS;
+  // Datos reales del store
+  const { user } = useAuthStore();
+  const { stats, activeJobs } = useATSStore();
+
+  // Filtrado de vacantes
+  const filteredJobs = useMemo(() => {
+    if (!searchQuery.trim()) return activeJobs;
+    const query = searchQuery.toLowerCase();
+    return activeJobs.filter(
+      (job) =>
+        job.title.toLowerCase().includes(query) ||
+        job.department.toLowerCase().includes(query) ||
+        job.location.toLowerCase().includes(query)
+    );
+  }, [activeJobs, searchQuery]);
+
+  // Acciones
+  const handleJobPress = (jobId: string) => {
+    router.push({
+      pathname: '/applicants',
+      params: { jobId }
+    });
+  };
+
+  const handleNotificationPress = () => {
+    Alert.alert(
+      t('welcome.notifications'),
+      '• Elena Beltrán applied for Senior UI/UX Designer\n• 3 interviews scheduled for today',
+      [{ text: 'OK', style: 'cancel' }]
+    );
+  };
+
+  // Determinar si la pantalla es "ancha" (tablet)
+  const isTablet = width > 768;
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
@@ -207,29 +241,39 @@ export const WelcomeScreen: React.FC = () => {
       <ScrollView
         style={styles.scrollView}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={[
+          styles.scrollContent,
+          isTablet && styles.scrollContentTablet
+        ]}
       >
         {/* ── Header: saludo + notificaciones ── */}
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            {/* Avatar del usuario */}
-            <View style={styles.headerAvatar}>
-              <Ionicons name="person" size={22} color={Colors.primary[700]} />
+            {/* Avatar del usuario (Placeholder con estilo Figma) */}
+            <View style={styles.headerAvatarContainer}>
+              <Image 
+                source={{ uri: 'https://randomuser.me/api/portraits/men/46.jpg' }} 
+                style={styles.headerAvatarImage} 
+              />
             </View>
             {/* Saludo */}
             <View>
               <Text style={styles.headerGreeting}>{t('welcome.greeting')}</Text>
               <Text style={styles.headerName}>
-                {t('welcome.hello')}, {user.name.split(' ')[0]}
+                {t('welcome.hello')} {user?.name.split(' ')[0] || 'Alex'}
               </Text>
             </View>
           </View>
 
           {/* Botón de notificaciones */}
-          <TouchableOpacity style={styles.notificationBtn} activeOpacity={0.8}>
+          <TouchableOpacity 
+            style={styles.notificationBtn} 
+            activeOpacity={0.8}
+            onPress={handleNotificationPress}
+          >
             <Ionicons
               name="notifications-outline"
-              size={22}
+              size={24}
               color={Colors.primary[700]}
             />
             {/* Badge de notificación */}
@@ -241,7 +285,7 @@ export const WelcomeScreen: React.FC = () => {
         <View style={styles.searchContainer}>
           <Ionicons
             name="search-outline"
-            size={18}
+            size={20}
             color={Colors.textSecondary}
             style={styles.searchIcon}
           />
@@ -249,53 +293,63 @@ export const WelcomeScreen: React.FC = () => {
             style={styles.searchInput}
             placeholder={t('welcome.searchPlaceholder')}
             placeholderTextColor={Colors.textSecondary}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
           />
+          {searchQuery !== '' && (
+            <TouchableOpacity onPress={() => setSearchQuery('')}>
+              <Ionicons name="close-circle" size={18} color={Colors.textSecondary} />
+            </TouchableOpacity>
+          )}
         </View>
 
-        {/* ── Tarjetas de estadísticas ── */}
-        <View style={styles.statsRow}>
-          {/* Empleos activos (destaca) */}
+        {/* ── Tarjetas de estadísticas (3 en fila) ── */}
+        <View style={[styles.statsRow, isTablet && styles.statsRowTablet]}>
           <StatCard
-            label={t('welcome.activeJobs')}
+            label={t('jobStatus.active')}
             value={stats.activeJobs}
+            subtitle={t('welcome.activeJobs').split(' ')[0]}
             highlight
           />
-
-          {/* Columna derecha: Aplicantes + Contratados */}
-          <View style={styles.statsColumn}>
-            <StatCard
-              label={t('welcome.applicants')}
-              value={stats.totalApplicants}
-              growthPercent={stats.applicantsGrowthPercent}
-            />
-            <StatCard
-              label={t('welcome.hired')}
-              value={stats.hiredThisMonth}
-              subtitle={t('welcome.thisMonth')}
-            />
-          </View>
+          <StatCard
+            label={t('welcome.applicants').toUpperCase()}
+            value={stats.totalApplicants}
+            growthPercent={stats.applicantsGrowthPercent}
+          />
+          <StatCard
+            label={t('welcome.hired').toUpperCase()}
+            value={stats.hiredThisMonth}
+            subtitle={t('welcome.thisMonth')}
+          />
         </View>
 
         {/* ── Sección: Vacantes Activas ── */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>{t('welcome.activeJobOpenings')}</Text>
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity 
+            activeOpacity={0.7} 
+            onPress={() => router.push('/applicants')}
+          >
             <Text style={styles.sectionViewAll}>{t('common.viewAll')}</Text>
           </TouchableOpacity>
         </View>
 
         {/* Lista de vacantes */}
-        <View style={styles.jobsList}>
-          {jobs.map((job) => (
-            <JobCard
-              key={job.id}
-              job={job}
-              onPress={() => {
-                // Navegar al detalle de la vacante
-                console.log('Navigate to job:', job.id);
-              }}
-            />
-          ))}
+        <View style={[styles.jobsList, isTablet && styles.jobsListTablet]}>
+          {filteredJobs.length > 0 ? (
+            filteredJobs.map((job) => (
+              <JobCard
+                key={job.id}
+                job={job}
+                onPress={() => handleJobPress(job.id)}
+              />
+            ))
+          ) : (
+            <View style={styles.emptyContainer}>
+              <Ionicons name="search-outline" size={48} color={Colors.gray[300]} />
+              <Text style={styles.emptyText}>{t('common.noResults')}</Text>
+            </View>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -317,51 +371,63 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing[4],
     paddingBottom: Spacing[8],
   },
+  scrollContentTablet: {
+    paddingHorizontal: Spacing[10],
+  },
 
   // ── Header ──
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: Spacing[4],
-    marginBottom: Spacing[4],
+    marginTop: Spacing[6],
+    marginBottom: Spacing[6],
   },
   headerLeft: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing[3],
   },
-  headerAvatar: {
-    width: 44,
-    height: 44,
+  headerAvatarContainer: {
+    width: 48,
+    height: 48,
     borderRadius: BorderRadius.full,
+    borderWidth: 2,
+    borderColor: Colors.white,
+    ...Shadows.sm,
+    overflow: 'hidden',
     backgroundColor: Colors.primary[100],
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  headerAvatarImage: {
+    width: '100%',
+    height: '100%',
   },
   headerGreeting: {
-    fontSize: Typography.fontSize.sm,
+    fontSize: Typography.fontSize.xs,
     color: Colors.textSecondary,
-    fontWeight: Typography.fontWeight.regular,
+    fontWeight: Typography.fontWeight.bold,
+    letterSpacing: 0.5,
   },
   headerName: {
-    fontSize: Typography.fontSize.lg,
+    fontSize: Typography.fontSize.xl,
     color: Colors.textPrimary,
     fontWeight: Typography.fontWeight.bold,
   },
   notificationBtn: {
-    width: 42,
-    height: 42,
+    width: 46,
+    height: 46,
     borderRadius: BorderRadius.full,
     backgroundColor: Colors.surface,
     alignItems: 'center',
     justifyContent: 'center',
     ...Shadows.sm,
+    borderWidth: 1,
+    borderColor: Colors.gray[100],
   },
   notificationDot: {
     position: 'absolute',
-    top: 8,
-    right: 8,
+    top: 12,
+    right: 12,
     width: 8,
     height: 8,
     borderRadius: 4,
@@ -377,9 +443,11 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
     borderRadius: BorderRadius.xl,
     paddingHorizontal: Spacing[4],
-    paddingVertical: Platform.OS === 'ios' ? Spacing[3] : Spacing[2],
-    marginBottom: Spacing[5],
+    paddingVertical: Platform.OS === 'ios' ? 14 : 10,
+    marginBottom: Spacing[6],
     ...Shadows.sm,
+    borderWidth: 1,
+    borderColor: Colors.gray[100],
   },
   searchIcon: {
     marginRight: Spacing[2],
@@ -395,56 +463,62 @@ const styles = StyleSheet.create({
   statsRow: {
     flexDirection: 'row',
     gap: Spacing[3],
-    marginBottom: Spacing[6],
+    marginBottom: Spacing[8],
+  },
+  statsRowTablet: {
+    gap: Spacing[6],
   },
   statCard: {
     flex: 1,
     backgroundColor: Colors.surface,
-    borderRadius: BorderRadius.xl,
+    borderRadius: 20,
     padding: Spacing[4],
-    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.gray[100],
     ...Shadows.sm,
+    minHeight: 110,
+    justifyContent: 'space-between',
   },
   statCardHighlight: {
-    backgroundColor: Colors.primary[700],
-    flex: 1.1,
-  },
-  statsColumn: {
-    flex: 1,
-    gap: Spacing[3],
+    backgroundColor: Colors.navy || '#1A1F36',
+    borderColor: Colors.navy || '#1A1F36',
   },
   statValue: {
-    fontSize: Typography.fontSize['2xl'],
+    fontSize: Typography.fontSize['3xl'],
     fontWeight: Typography.fontWeight.bold,
     color: Colors.textPrimary,
-    marginBottom: 2,
   },
   statValueHighlight: {
-    fontSize: Typography.fontSize['3xl'],
     color: Colors.white,
   },
   statCardLabel: {
     fontSize: Typography.fontSize.xs,
     color: Colors.textSecondary,
-    fontWeight: Typography.fontWeight.medium,
-    textTransform: 'uppercase',
+    fontWeight: Typography.fontWeight.bold,
     letterSpacing: 0.5,
+  },
+  statCardLabelHighlight: {
+    color: Colors.white,
+    opacity: 0.8,
   },
   growthRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 2,
-    marginTop: 2,
   },
   growthText: {
     fontSize: Typography.fontSize.xs,
     color: Colors.accent.green,
-    fontWeight: Typography.fontWeight.semiBold,
+    fontWeight: Typography.fontWeight.bold,
   },
   statSubtitle: {
-    fontSize: Typography.fontSize.xs,
+    fontSize: 10,
     color: Colors.textSecondary,
-    marginTop: 2,
+    fontWeight: Typography.fontWeight.medium,
+  },
+  statSubtitleHighlight: {
+    color: Colors.white,
+    opacity: 0.7,
   },
 
   // ── Sección header ──
@@ -452,7 +526,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: Spacing[3],
+    marginBottom: Spacing[4],
   },
   sectionTitle: {
     fontSize: Typography.fontSize.lg,
@@ -461,35 +535,44 @@ const styles = StyleSheet.create({
   },
   sectionViewAll: {
     fontSize: Typography.fontSize.sm,
-    color: Colors.primary[700],
-    fontWeight: Typography.fontWeight.semiBold,
+    color: Colors.accent.blue,
+    fontWeight: Typography.fontWeight.bold,
   },
 
   // ── Lista de vacantes ──
   jobsList: {
-    gap: Spacing[3],
+    gap: Spacing[4],
+  },
+  jobsListTablet: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: Spacing[4],
   },
   jobCard: {
-    padding: Spacing[4],
+    padding: Spacing[5],
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: Colors.gray[100],
+    width: '100%',
   },
   jobHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: Spacing[1],
+    alignItems: 'center',
+    marginBottom: Spacing[2],
     gap: Spacing[2],
   },
   jobTitle: {
     flex: 1,
     fontSize: Typography.fontSize.md,
-    fontWeight: Typography.fontWeight.semiBold,
+    fontWeight: Typography.fontWeight.bold,
     color: Colors.textPrimary,
   },
   jobMeta: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-    marginBottom: Spacing[3],
+    marginBottom: Spacing[4],
   },
   jobMetaText: {
     fontSize: Typography.fontSize.sm,
@@ -507,19 +590,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   avatarCircle: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 2,
     borderColor: Colors.white,
+    overflow: 'hidden',
+    backgroundColor: Colors.gray[100],
+  },
+  avatarImage: {
+    width: '100%',
+    height: '100%',
   },
   avatarCount: {
     backgroundColor: Colors.gray[200],
   },
   avatarCountText: {
-    fontSize: 9,
+    fontSize: 10,
     fontWeight: Typography.fontWeight.bold,
     color: Colors.gray[600],
   },
@@ -530,11 +619,23 @@ const styles = StyleSheet.create({
   },
   jobApplicantsCount: {
     fontSize: Typography.fontSize.sm,
-    fontWeight: Typography.fontWeight.semiBold,
+    fontWeight: Typography.fontWeight.bold,
     color: Colors.textPrimary,
   },
   jobCountSubtitle: {
     fontSize: Typography.fontSize.xs,
+    color: Colors.textSecondary,
+  },
+
+  // ── Estado vacío ──
+  emptyContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: Spacing[12],
+    gap: Spacing[2],
+  },
+  emptyText: {
+    fontSize: Typography.fontSize.md,
     color: Colors.textSecondary,
   },
 });

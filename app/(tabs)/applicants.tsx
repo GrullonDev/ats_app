@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import {
   View,
   Text,
@@ -12,9 +12,11 @@ import {
   Platform,
   Modal,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { useLocalSearchParams } from 'expo-router';
 
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '@constants/index';
 import { useTranslation } from '@hooks/useTranslation';
@@ -27,15 +29,24 @@ import type { ApplicantStatus, Applicant } from '@/types/index';
 export default function ApplicantsTab() {
   const { t } = useTranslation();
   const { width } = useWindowDimensions();
+  const params = useLocalSearchParams<{ jobId?: string }>();
   
   // State
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState<ApplicantStatus | 'all'>('all');
+  const [jobIdFilter, setJobIdFilter] = useState<string | null>(null);
   const [applicants, setApplicants] = useState<Applicant[]>(MOCK_APPLICANTS);
   const [selectedApplicant, setSelectedApplicant] = useState<Applicant | null>(null);
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   
+  // Update jobId filter when params change
+  useEffect(() => {
+    if (params.jobId) {
+      setJobIdFilter(params.jobId);
+    }
+  }, [params.jobId]);
+
   // Form State for New Applicant
   const [newName, setNewName] = useState('');
   const [newJobId, setNewJobId] = useState(MOCK_JOBS[0].id);
@@ -58,14 +69,22 @@ export default function ApplicantsTab() {
   // Logic for filtering
   const filteredApplicants = useMemo(() => {
     return applicants.filter((applicant) => {
-      const matchesFilter = activeFilter === 'all' || applicant.status === activeFilter;
+      // Filter by status tab
+      const matchesStatus = activeFilter === 'all' || applicant.status === activeFilter;
+      
+      // Filter by jobId (if navigated from Dashboard)
+      const matchesJobId = !jobIdFilter || applicant.jobId === jobIdFilter;
+      
+      // Filter by search query
       const job = MOCK_JOBS.find(j => j.id === applicant.jobId);
       const matchesSearch = 
         applicant.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (job?.title.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
-      return matchesFilter && matchesSearch;
+        
+      return matchesStatus && matchesJobId && matchesSearch;
     });
-  }, [applicants, activeFilter, searchQuery]);
+  }, [applicants, activeFilter, jobIdFilter, searchQuery]);
+
 
   // Statistics for the metrics bar
   const stats = useMemo(() => [
@@ -78,7 +97,9 @@ export default function ApplicantsTab() {
   const handleResetFilters = useCallback(() => {
     setSearchQuery('');
     setActiveFilter('all');
+    setJobIdFilter(null);
   }, []);
+
 
   const handleOpenDetails = (applicant: Applicant) => {
     setSelectedApplicant(applicant);
