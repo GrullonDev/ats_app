@@ -1,16 +1,8 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { MMKV } from 'react-native-mmkv';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { changeLanguage, getCurrentLocale } from '@i18n/index';
 import type { SupportedLanguage } from '@types';
-
-const storage = new MMKV();
-
-const mmkvStorage = {
-  setItem: (name: string, value: string) => storage.set(name, value),
-  getItem: (name: string) => storage.getString(name) ?? null,
-  removeItem: (name: string) => storage.delete(name),
-};
 
 interface LanguageState {
   /** Idioma activo de la aplicación */
@@ -35,7 +27,7 @@ export const useLanguageStore = create<LanguageState>()(
     }),
     {
       name: 'language-storage',
-      storage: createJSONStorage(() => mmkvStorage),
+      storage: createJSONStorage(() => AsyncStorage),
       onRehydrateStorage: () => (state) => {
         if (state) {
           changeLanguage(state.locale);

@@ -59,6 +59,7 @@ target 'ATSMobile' do
           config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
         end
       end
+    end
     # Patch fmt to disable consteval which breaks on newer Xcode/Apple Clang
     `sed -i '' 's/FMT_USE_CONSTEVAL 1/FMT_USE_CONSTEVAL 0/g' Pods/fmt/include/fmt/base.h`
   end
