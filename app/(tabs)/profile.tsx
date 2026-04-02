@@ -15,6 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '@constants/index';
 import { useTranslation } from '@hooks/useTranslation';
+import { useAuthStore } from '@store/authStore';
 import type { SupportedLanguage, LanguageOption } from '@/types/index';
 import { MOCK_USER } from '@utils/mockData';
 
@@ -30,8 +31,13 @@ const LANGUAGE_OPTIONS: LanguageOption[] = [
 export default function ProfileTab() {
   const { t, locale, changeLanguage } = useTranslation();
   const [showLanguageModal, setShowLanguageModal] = useState(false);
+  const { logout, user: authUser } = useAuthStore();
 
-  const user = MOCK_USER;
+  const user = authUser || MOCK_USER;
+
+  const handleLogout = () => {
+    logout();
+  };
 
   const handleLanguageSelect = (lang: SupportedLanguage) => {
     changeLanguage(lang);
@@ -158,7 +164,11 @@ export default function ProfileTab() {
         </View>
 
         {/* ── Logout ── */}
-        <TouchableOpacity style={styles.logoutButton} activeOpacity={0.8}>
+        <TouchableOpacity 
+          style={styles.logoutButton} 
+          activeOpacity={0.8}
+          onPress={handleLogout}
+        >
           <Ionicons name="log-out-outline" size={20} color={Colors.error} />
           <Text style={styles.logoutText}>{t('profile.logout')}</Text>
         </TouchableOpacity>

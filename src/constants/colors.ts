@@ -54,7 +54,16 @@ export const Colors = {
   statsBackground: '#F1F5F9',
   navy: '#1A1F36',
   accentBlue: '#3B82F6',
-  // Estados
+  // Estados de aplicaciones (Badges)
+  status: {
+    review: { bg: '#F3F4F6', text: '#4B5563' },    // Gris
+    screening: { bg: '#EDE9FE', text: '#7C3AED' }, // Púrpura
+    interview: { bg: '#DBEAFE', text: '#2563EB' }, // Azul
+    offer: { bg: '#DCFCE7', text: '#16A34A' },    // Verde
+    hired: { bg: '#D1FAE5', text: '#059669' },    // Verde Esmeralda
+    rejected: { bg: '#FEE2E2', text: '#DC2626' },   // Rojo
+  },
+  // Estados semánticos generales
   success: '#10B981',
   successLight: '#D1FAE5',
   warning: '#F59E0B',

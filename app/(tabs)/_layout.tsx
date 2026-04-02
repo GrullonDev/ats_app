@@ -2,6 +2,7 @@ import React from 'react';
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Colors, Typography } from '@constants/index';
 import { useTranslation } from '@hooks/useTranslation';
@@ -12,6 +13,12 @@ import { useTranslation } from '@hooks/useTranslation';
  */
 export default function TabsLayout() {
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
+
+  // Calcular altura y padding dinámico según insets del dispositivo
+  // iOS con gestos suele tener bottom > 0. Android con botones suele tener bottom = 0 o pequeño.
+  const tabHeight = 60 + Math.max(insets.bottom, 10);
+  const paddingBottom = Math.max(insets.bottom, 12);
 
   return (
     <Tabs
@@ -23,9 +30,12 @@ export default function TabsLayout() {
           backgroundColor: Colors.surface,
           borderTopColor: Colors.border,
           borderTopWidth: 1,
-          height: Platform.OS === 'ios' ? 85 : 65,
-          paddingBottom: Platform.OS === 'ios' ? 28 : 10,
+          height: tabHeight,
+          paddingBottom: paddingBottom,
           paddingTop: 8,
+          // Evitar que la barra flote si hay botones nativos
+          elevation: 0,
+          borderBottomWidth: 0,
         },
         tabBarLabelStyle: {
           fontSize: Typography.fontSize.xs,

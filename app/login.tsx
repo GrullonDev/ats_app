@@ -36,12 +36,8 @@ export default function LoginScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  // Redirigir al dashboard si ya está autenticado
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.replace('/(tabs)');
-    }
-  }, [isAuthenticated, router]);
+  // La redirección se maneja globalmente en app/_layout.tsx basado en isAuthenticated
+
 
   /**
    * Manejar intento de login
@@ -55,19 +51,19 @@ export default function LoginScreen() {
 
     setIsLoading(true);
 
-    // --- Simular llamada a API (Mock logic: jorge/jorge) ---
+    // --- Simular llamada a API (Mock logic: JORGE/JORGE) ---
     setTimeout(() => {
-      if (
-        (username.toLowerCase() === 'jorge' || username.toLowerCase() === 'jorge@email.com') &&
-        password === 'jorge'
-      ) {
-        // Login exitoso: Inyectar usuario mock con nombre 'Jorge'
+      const normalizedUser = username.trim().toUpperCase();
+      const normalizedPass = password.trim().toUpperCase();
+
+      if (normalizedUser === 'JORGE' && normalizedPass === 'JORGE') {
+        // Login exitoso: Inyectar usuario mock con nombre 'JORGE'
         const jorgeUser = {
           ...MOCK_USER,
-          name: 'Jorge Grullón',
-          email: 'jorge@email.com',
+          name: 'JORGE',
+          email: 'jorge@ats.com',
         };
-        login(jorgeUser, 'mock_token_abc_123');
+        login(jorgeUser, 'mock_token_jorge_123');
         router.replace('/(tabs)');
       } else {
         // Fallido

@@ -19,7 +19,7 @@ import { StatusBadge } from '@components/ui/StatusBadge';
 import { useTranslation } from '@hooks/useTranslation';
 import { useAuthStore } from '@store/authStore';
 import { useATSStore } from '@store/atsStore';
-import type { Job, JobStatus } from '@types/index';
+import type { Job, JobStatus } from '@/types';
 import { MOCK_JOBS, MOCK_USER, MOCK_STATS } from '@utils/mockData';
 
 // ─────────────────────────────────────────────
@@ -195,7 +195,8 @@ export const WelcomeScreen: React.FC = () => {
   const { t } = useTranslation();
 
   // En producción esto vendría del AuthStore
-  const user = MOCK_USER;
+  const { user: authUser } = useAuthStore();
+  const user = authUser || MOCK_USER;
   const stats = MOCK_STATS;
   const jobs = MOCK_JOBS;
 

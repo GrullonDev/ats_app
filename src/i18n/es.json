@@ -19,7 +19,9 @@
     "language": "Idioma",
     "spanish": "Español",
     "english": "Inglés",
-    "selectLanguage": "Seleccionar idioma"
+    "selectLanguage": "Seleccionar idioma",
+    "noResults": "No se encontraron resultados",
+    "clearFilters": "Limpiar filtros"
   },
   "welcome": {
     "greeting": "¡Bienvenido de vuelta!",
@@ -75,12 +77,34 @@
   },
   "applicants": {
     "title": "Aplicantes",
-    "total": "Total aplicantes",
-    "new": "Nuevos",
-    "screening": "En revisión",
-    "interviewing": "Entrevistando",
-    "hired": "Contratados",
-    "rejected": "Rechazados"
+    "allApplicants": "Todos los aplicantes",
+    "candidatesCount": "{{count}} candidatos en todas las posiciones",
+    "searchPlaceholder": "Buscar por nombre o posición...",
+    "filterAll": "Todos",
+    "filterApplied": "Postulados",
+    "filterScreening": "Revisión",
+    "filterInterview": "Entrevista",
+    "filterOffer": "Oferta",
+    "metrics": {
+      "total": "Total",
+      "new": "Nuevos",
+      "interview": "Entrevista",
+      "hired": "Contratados"
+    },
+    "status": {
+      "new": "NUEVO",
+      "screening": "REVISIÓN",
+      "interviewing": "ENTREVISTA",
+      "offered": "OFERTA",
+      "hired": "CONTRATADO",
+      "rejected": "RECHAZADO"
+    },
+    "total_legacy": "Total aplicantes",
+    "new_legacy": "Nuevos",
+    "screening_legacy": "En revisión",
+    "interviewing_legacy": "Entrevistando",
+    "hired_legacy": "Contratados",
+    "rejected_legacy": "Rechazados"
   },
   "jobs": {
     "title": "Vacantes",

@@ -19,7 +19,9 @@
     "language": "Language",
     "spanish": "Spanish",
     "english": "English",
-    "selectLanguage": "Select Language"
+    "selectLanguage": "Select Language",
+    "noResults": "No results found",
+    "clearFilters": "Clear filters"
   },
   "welcome": {
     "greeting": "Welcome back!",
@@ -75,12 +77,34 @@
   },
   "applicants": {
     "title": "Applicants",
-    "total": "Total applicants",
-    "new": "New",
-    "screening": "Screening",
-    "interviewing": "Interviewing",
-    "hired": "Hired",
-    "rejected": "Rejected"
+    "allApplicants": "All Applicants",
+    "candidatesCount": "{{count}} candidates across all positions",
+    "searchPlaceholder": "Search by name or position...",
+    "filterAll": "All",
+    "filterApplied": "Applied",
+    "filterScreening": "Screening",
+    "filterInterview": "Interview",
+    "filterOffer": "Offer",
+    "metrics": {
+      "total": "Total",
+      "new": "New",
+      "interview": "Interview",
+      "hired": "Hired"
+    },
+    "status": {
+      "new": "NEW",
+      "screening": "SCREENING",
+      "interviewing": "INTERVIEW",
+      "offered": "OFFERED",
+      "hired": "HIRED",
+      "rejected": "REJECTED"
+    },
+    "total_legacy": "Total applicants",
+    "new_legacy": "New",
+    "screening_legacy": "Screening",
+    "interviewing_legacy": "Interviewing",
+    "hired_legacy": "Hired",
+    "rejected_legacy": "Rejected"
   },
   "jobs": {
     "title": "Jobs",
