@@ -59,7 +59,19 @@
     "logout": "Cerrar sesión",
     "changeLanguage": "Cambiar idioma",
     "notifications": "Notificaciones",
-    "about": "Acerca de"
+    "about": "Acerca de",
+    "editProfile": "Editar Perfil",
+    "preferences": "Preferencias",
+    "security": "Seguridad",
+    "jobsPosted": "Vacantes",
+    "candidatesReviewed": "Candidatos",
+    "interviewsConducted": "Entrevistas",
+    "successfulHires": "Contratados",
+    "thisWeek": "esta semana",
+    "thisMonth": "este mes",
+    "updatePersonalInfo": "Actualiza tu información personal",
+    "customizeExperience": "Personaliza tu experiencia",
+    "passwordAuth": "Contraseña y autenticación"
   },
   "applicants": {
     "title": "Aplicantes",

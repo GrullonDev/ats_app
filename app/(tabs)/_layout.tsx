@@ -17,7 +17,7 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: Colors.primary[700],
+        tabBarActiveTintColor: Colors.accentBlue,
         tabBarInactiveTintColor: Colors.gray[400],
         tabBarStyle: {
           backgroundColor: Colors.surface,
@@ -38,7 +38,7 @@ export default function TabsLayout() {
         name="index"
         options={{
           title: t('tabs.dashboard'),
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
             <Ionicons name="grid-outline" size={size} color={color} />
           ),
         }}
@@ -49,7 +49,7 @@ export default function TabsLayout() {
         name="applicants"
         options={{
           title: t('tabs.applicants'),
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
             <Ionicons name="people-outline" size={size} color={color} />
           ),
         }}
@@ -60,7 +60,7 @@ export default function TabsLayout() {
         name="calendar"
         options={{
           title: t('tabs.calendar'),
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
             <Ionicons name="calendar-outline" size={size} color={color} />
           ),
         }}
@@ -71,7 +71,7 @@ export default function TabsLayout() {
         name="profile"
         options={{
           title: t('tabs.profile'),
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
             <Ionicons name="person-outline" size={size} color={color} />
           ),
         }}

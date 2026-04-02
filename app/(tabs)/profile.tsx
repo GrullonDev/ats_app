@@ -7,13 +7,15 @@ import {
   Modal,
   Pressable,
   ScrollView,
+  Image,
+  StatusBar,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '@constants/index';
 import { useTranslation } from '@hooks/useTranslation';
-import type { SupportedLanguage, LanguageOption } from '@types/index';
+import type { SupportedLanguage, LanguageOption } from '@/types/index';
 import { MOCK_USER } from '@utils/mockData';
 
 // Opciones de idioma disponibles
@@ -23,7 +25,7 @@ const LANGUAGE_OPTIONS: LanguageOption[] = [
 ];
 
 /**
- * Pantalla de Perfil con opción de cambio de idioma
+ * Pantalla de Perfil mejorada con el nuevo diseño
  */
 export default function ProfileTab() {
   const { t, locale, changeLanguage } = useTranslation();
@@ -37,75 +39,134 @@ export default function ProfileTab() {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* ── Header del perfil ── */}
-        <View style={styles.profileHeader}>
-          <View style={styles.avatarLarge}>
-            <Ionicons name="person" size={40} color={Colors.primary[700]} />
+    <View style={styles.container}>
+      <StatusBar barStyle="light-content" />
+      
+      {/* ── Header Naval ── */}
+      <View style={styles.header}>
+        <SafeAreaView edges={['top']} style={styles.headerContent}>
+          <Text style={styles.headerTitle}>{t('tabs.profile')}</Text>
+          <TouchableOpacity style={styles.headerAction} activeOpacity={0.7}>
+            <Ionicons name="add" size={26} color={Colors.white} />
+          </TouchableOpacity>
+        </SafeAreaView>
+      </View>
+
+      <ScrollView 
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
+        {/* ── Tarjeta de Perfil flotante ── */}
+        <View style={styles.profileCard}>
+          <View style={styles.avatarContainer}>
+            <View style={styles.avatarWrapper}>
+              <View style={styles.avatarPlaceholder}>
+                <Ionicons name="person" size={50} color={Colors.primary[700]} />
+              </View>
+              <View style={styles.onlineBadge} />
+            </View>
           </View>
-          <Text style={styles.profileName}>{user.name}</Text>
-          <Text style={styles.profileEmail}>{user.email}</Text>
-          <View style={styles.roleBadge}>
-            <Text style={styles.roleText}>{user.role.toUpperCase()}</Text>
+
+          <View style={styles.userInfo}>
+            <Text style={styles.userName}>{user.name}</Text>
+            <Text style={styles.userRole}>{user.department || user.role}</Text>
+            <Text style={styles.userEmail}>{user.email}</Text>
+          </View>
+
+          {/* ── Cuadrícula de Métricas ── */}
+          <View style={styles.metricsGrid}>
+            <View style={styles.metricItem}>
+              <Text style={styles.metricValue}>12</Text>
+              <Text style={styles.metricLabel}>{t('profile.jobsPosted')}</Text>
+              <Text style={styles.metricSubtext}>+2 {t('profile.thisMonth')}</Text>
+            </View>
+            <View style={styles.metricItem}>
+              <Text style={styles.metricValue}>245</Text>
+              <Text style={styles.metricLabel}>{t('profile.candidatesReviewed')}</Text>
+              <Text style={styles.metricSubtext}>+42 {t('profile.thisWeek')}</Text>
+            </View>
+            <View style={styles.metricItem}>
+              <Text style={styles.metricValue}>38</Text>
+              <Text style={styles.metricLabel}>{t('profile.interviewsConducted')}</Text>
+              <Text style={styles.metricSubtext}>5 {t('profile.thisWeek')}</Text>
+            </View>
+            <View style={styles.metricItem}>
+              <Text style={styles.metricValue}>8</Text>
+              <Text style={styles.metricLabel}>{t('profile.successfulHires')}</Text>
+              <Text style={styles.metricSubtext}>{t('profile.thisMonth')}</Text>
+            </View>
           </View>
         </View>
 
-        {/* ── Opciones de configuración ── */}
-        <View style={styles.settingsSection}>
-          <Text style={styles.sectionLabel}>{t('profile.settings')}</Text>
+        {/* ── Sección de Ajustes ── */}
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>{t('profile.settings').toUpperCase()}</Text>
+          
+          {/* Edit Profile */}
+          <TouchableOpacity style={styles.settingListItem} activeOpacity={0.7}>
+            <View style={[styles.settingIconContainer, { backgroundColor: '#F1F5F9' }]}>
+              <Ionicons name="person-outline" size={20} color={Colors.textPrimary} />
+            </View>
+            <View style={styles.settingTextContainer}>
+              <Text style={styles.settingItemTitle}>{t('profile.editProfile')}</Text>
+              <Text style={styles.settingItemSubtitle}>{t('profile.updatePersonalInfo')}</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={Colors.gray[400]} />
+          </TouchableOpacity>
 
-          {/* Cambiar idioma */}
-          <TouchableOpacity
-            style={styles.settingItem}
+          {/* Preferences */}
+          <TouchableOpacity style={styles.settingListItem} activeOpacity={0.7}>
+            <View style={[styles.settingIconContainer, { backgroundColor: '#F1F5F9' }]}>
+              <Ionicons name="sparkles-outline" size={20} color={Colors.textPrimary} />
+            </View>
+            <View style={styles.settingTextContainer}>
+              <Text style={styles.settingItemTitle}>{t('profile.preferences')}</Text>
+              <Text style={styles.settingItemSubtitle}>{t('profile.customizeExperience')}</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={Colors.gray[400]} />
+          </TouchableOpacity>
+
+          {/* Security */}
+          <TouchableOpacity style={styles.settingListItem} activeOpacity={0.7}>
+            <View style={[styles.settingIconContainer, { backgroundColor: '#F1F5F9' }]}>
+              <Ionicons name="shield-checkmark-outline" size={20} color={Colors.textPrimary} />
+            </View>
+            <View style={styles.settingTextContainer}>
+              <Text style={styles.settingItemTitle}>{t('profile.security')}</Text>
+              <Text style={styles.settingItemSubtitle}>{t('profile.passwordAuth')}</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={Colors.gray[400]} />
+          </TouchableOpacity>
+
+          {/* Cambio de Idioma */}
+          <TouchableOpacity 
+            style={styles.settingListItem} 
+            activeOpacity={0.7}
             onPress={() => setShowLanguageModal(true)}
-            activeOpacity={0.8}
           >
-            <View style={styles.settingLeft}>
-              <View style={[styles.settingIcon, { backgroundColor: Colors.primary[100] }]}>
-                <Ionicons name="language-outline" size={20} color={Colors.primary[700]} />
-              </View>
-              <View>
-                <Text style={styles.settingTitle}>{t('profile.changeLanguage')}</Text>
-                <Text style={styles.settingSubtitle}>
-                  {locale === 'es' ? '🇪🇸 Español' : '🇺🇸 English'}
-                </Text>
-              </View>
+            <View style={[styles.settingIconContainer, { backgroundColor: Colors.infoLight }]}>
+              <Ionicons name="language-outline" size={20} color={Colors.info} />
             </View>
-            <Ionicons name="chevron-forward" size={18} color={Colors.gray[400]} />
-          </TouchableOpacity>
-
-          {/* Notificaciones */}
-          <TouchableOpacity style={styles.settingItem} activeOpacity={0.8}>
-            <View style={styles.settingLeft}>
-              <View style={[styles.settingIcon, { backgroundColor: Colors.accent.orangeLight }]}>
-                <Ionicons name="notifications-outline" size={20} color={Colors.accent.orange} />
-              </View>
-              <Text style={styles.settingTitle}>{t('profile.notifications')}</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={18} color={Colors.gray[400]} />
-          </TouchableOpacity>
-
-          {/* Acerca de */}
-          <TouchableOpacity style={styles.settingItem} activeOpacity={0.8}>
-            <View style={styles.settingLeft}>
-              <View style={[styles.settingIcon, { backgroundColor: Colors.accent.blueLight }]}>
-                <Ionicons name="information-circle-outline" size={20} color={Colors.accent.blue} />
-              </View>
-              <Text style={styles.settingTitle}>{t('profile.about')}</Text>
+            <View style={styles.settingTextContainer}>
+              <Text style={styles.settingItemTitle}>{t('profile.changeLanguage')}</Text>
+              <Text style={styles.settingItemSubtitle}>
+                {locale === 'es' ? 'Español' : 'English'}
+              </Text>
             </View>
             <Ionicons name="chevron-forward" size={18} color={Colors.gray[400]} />
           </TouchableOpacity>
         </View>
 
-        {/* ── Cerrar sesión ── */}
-        <TouchableOpacity style={styles.logoutButton} activeOpacity={0.85}>
-          <Ionicons name="log-out-outline" size={20} color={Colors.accent.red} />
+        {/* ── Logout ── */}
+        <TouchableOpacity style={styles.logoutButton} activeOpacity={0.8}>
+          <Ionicons name="log-out-outline" size={20} color={Colors.error} />
           <Text style={styles.logoutText}>{t('profile.logout')}</Text>
         </TouchableOpacity>
+
+        <View style={styles.footerSpacing} />
       </ScrollView>
 
-      {/* ── Modal de selección de idioma ── */}
+      {/* ── Modal de Selección de Idioma ── */}
       <Modal
         visible={showLanguageModal}
         transparent
@@ -126,7 +187,7 @@ export default function ProfileTab() {
                   styles.languageOption,
                   locale === option.code && styles.languageOptionSelected,
                 ]}
-                onPress={() => handleLanguageSelect(option.code)}
+                onPress={() => handleLanguageSelect(option.code as SupportedLanguage)}
                 activeOpacity={0.8}
               >
                 <Text style={styles.languageFlag}>{option.flag}</Text>
@@ -141,7 +202,6 @@ export default function ProfileTab() {
                     name="checkmark-circle"
                     size={22}
                     color={Colors.primary[700]}
-                    style={styles.languageCheck}
                   />
                 )}
               </TouchableOpacity>
@@ -149,7 +209,7 @@ export default function ProfileTab() {
           </View>
         </Pressable>
       </Modal>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -158,136 +218,194 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
-
-  // ── Perfil header ──
-  profileHeader: {
-    alignItems: 'center',
-    paddingTop: Spacing[6],
-    paddingBottom: Spacing[6],
-    paddingHorizontal: Spacing[4],
+  header: {
+    backgroundColor: Colors.navy,
+    height: 180,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
   },
-  avatarLarge: {
-    width: 90,
-    height: 90,
-    borderRadius: 45,
-    backgroundColor: Colors.primary[100],
+  headerContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: Spacing[5],
+    paddingTop: Spacing[4],
+  },
+  headerTitle: {
+    fontSize: 22,
+    fontWeight: Typography.fontWeight.bold,
+    color: Colors.white,
+  },
+  headerAction: {
+    width: 40,
+    height: 40,
+    borderRadius: BorderRadius.md,
+    backgroundColor: 'rgba(255,255,255,0.15)',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: Spacing[3],
+  },
+  scrollContent: {
+    paddingHorizontal: Spacing[5],
+  },
+  profileCard: {
+    backgroundColor: Colors.surface,
+    borderRadius: BorderRadius['3xl'],
+    marginTop: -70,
+    padding: Spacing[5],
+    alignItems: 'center',
+    ...Shadows.lg,
+  },
+  avatarContainer: {
+    marginTop: -Spacing[12],
+    marginBottom: Spacing[4],
+  },
+  avatarWrapper: {
+    position: 'relative',
+  },
+  avatarPlaceholder: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: Colors.primary[50],
+    borderWidth: 4,
+    borderColor: Colors.white,
+    alignItems: 'center',
+    justifyContent: 'center',
     ...Shadows.md,
   },
-  profileName: {
-    fontSize: Typography.fontSize.xl,
+  onlineBadge: {
+    position: 'absolute',
+    bottom: 5,
+    right: 5,
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: Colors.success,
+    borderWidth: 3,
+    borderColor: Colors.white,
+  },
+  userInfo: {
+    alignItems: 'center',
+    marginBottom: Spacing[6],
+  },
+  userName: {
+    fontSize: 20,
     fontWeight: Typography.fontWeight.bold,
     color: Colors.textPrimary,
     marginBottom: 4,
   },
-  profileEmail: {
-    fontSize: Typography.fontSize.sm,
+  userRole: {
+    fontSize: 14,
     color: Colors.textSecondary,
-    marginBottom: Spacing[2],
+    marginBottom: 2,
   },
-  roleBadge: {
-    backgroundColor: Colors.primary[100],
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: BorderRadius.full,
+  userEmail: {
+    fontSize: 12,
+    color: Colors.gray[400],
   },
-  roleText: {
-    fontSize: Typography.fontSize.xs,
+  metricsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: Spacing[3],
+    justifyContent: 'center',
+  },
+  metricItem: {
+    width: '47%',
+    backgroundColor: Colors.statsBackground,
+    borderRadius: BorderRadius.xl,
+    padding: Spacing[4],
+    alignItems: 'flex-start',
+  },
+  metricValue: {
+    fontSize: 24,
     fontWeight: Typography.fontWeight.bold,
-    color: Colors.primary[700],
+    color: Colors.navy,
+    marginBottom: 4,
+  },
+  metricLabel: {
+    fontSize: 11,
+    fontWeight: Typography.fontWeight.bold,
+    color: Colors.gray[500],
+    marginBottom: 2,
+  },
+  metricSubtext: {
+    fontSize: 10,
+    color: Colors.accentBlue,
+    fontWeight: Typography.fontWeight.medium,
+  },
+  sectionContainer: {
+    marginTop: Spacing[6],
+  },
+  sectionTitle: {
+    fontSize: 12,
+    fontWeight: Typography.fontWeight.bold,
+    color: Colors.accentBlue,
+    marginBottom: Spacing[3],
     letterSpacing: 1,
   },
-
-  // ── Sección de ajustes ──
-  settingsSection: {
-    marginHorizontal: Spacing[4],
+  settingListItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: Colors.surface,
+    padding: Spacing[4],
     borderRadius: BorderRadius.xl,
-    overflow: 'hidden',
-    marginBottom: Spacing[4],
+    marginBottom: Spacing[3],
     ...Shadows.sm,
   },
-  sectionLabel: {
-    fontSize: Typography.fontSize.xs,
-    fontWeight: Typography.fontWeight.bold,
-    color: Colors.textSecondary,
-    letterSpacing: 1,
-    textTransform: 'uppercase',
-    paddingHorizontal: Spacing[4],
-    paddingTop: Spacing[4],
-    paddingBottom: Spacing[2],
-  },
-  settingItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: Spacing[4],
-    paddingVertical: Spacing[3],
-    borderTopWidth: 1,
-    borderTopColor: Colors.divider,
-  },
-  settingLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing[3],
-    flex: 1,
-  },
-  settingIcon: {
-    width: 38,
-    height: 38,
+  settingIconContainer: {
+    width: 40,
+    height: 40,
     borderRadius: BorderRadius.lg,
     alignItems: 'center',
     justifyContent: 'center',
+    marginRight: Spacing[4],
   },
-  settingTitle: {
-    fontSize: Typography.fontSize.base,
-    fontWeight: Typography.fontWeight.medium,
+  settingTextContainer: {
+    flex: 1,
+  },
+  settingItemTitle: {
+    fontSize: 15,
+    fontWeight: Typography.fontWeight.semiBold,
     color: Colors.textPrimary,
   },
-  settingSubtitle: {
-    fontSize: Typography.fontSize.sm,
+  settingItemSubtitle: {
+    fontSize: 12,
     color: Colors.textSecondary,
     marginTop: 2,
   },
-
-  // ── Logout ──
   logoutButton: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: Spacing[2],
-    marginHorizontal: Spacing[4],
-    marginBottom: Spacing[8],
-    backgroundColor: Colors.accent.redLight,
-    borderRadius: BorderRadius.xl,
-    paddingVertical: Spacing[4],
+    padding: Spacing[4],
+    marginTop: Spacing[4],
+    marginBottom: Spacing[4],
   },
   logoutText: {
-    fontSize: Typography.fontSize.base,
+    fontSize: 16,
     fontWeight: Typography.fontWeight.semiBold,
-    color: Colors.accent.red,
+    color: Colors.error,
+    marginLeft: Spacing[2],
   },
-
-  // ── Modal de idioma ──
+  footerSpacing: {
+    height: 40,
+  },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'center',
-    padding: Spacing[4],
+    alignItems: 'center',
+    padding: Spacing[5],
   },
   modalContainer: {
+    width: '100%',
     backgroundColor: Colors.surface,
     borderRadius: BorderRadius['2xl'],
     padding: Spacing[5],
-    width: '100%',
-    maxWidth: 320,
     ...Shadows.lg,
   },
   modalTitle: {
-    fontSize: Typography.fontSize.lg,
+    fontSize: 18,
     fontWeight: Typography.fontWeight.bold,
     color: Colors.textPrimary,
     textAlign: 'center',
@@ -296,32 +414,27 @@ const styles = StyleSheet.create({
   languageOption: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: Spacing[3],
-    paddingHorizontal: Spacing[3],
-    borderRadius: BorderRadius.lg,
-    marginBottom: Spacing[2],
-    borderWidth: 1.5,
+    padding: Spacing[4],
+    borderRadius: BorderRadius.xl,
+    borderWidth: 1,
     borderColor: Colors.border,
+    marginBottom: Spacing[2],
   },
   languageOptionSelected: {
     borderColor: Colors.primary[700],
     backgroundColor: Colors.primary[50],
   },
   languageFlag: {
-    fontSize: 26,
-    marginRight: Spacing[3],
+    fontSize: 24,
+    marginRight: Spacing[4],
   },
   languageLabel: {
     flex: 1,
-    fontSize: Typography.fontSize.md,
-    fontWeight: Typography.fontWeight.medium,
+    fontSize: 16,
     color: Colors.textPrimary,
   },
   languageLabelSelected: {
+    fontWeight: Typography.fontWeight.bold,
     color: Colors.primary[700],
-    fontWeight: Typography.fontWeight.semiBold,
-  },
-  languageCheck: {
-    marginLeft: 'auto',
   },
 });

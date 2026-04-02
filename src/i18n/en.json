@@ -59,7 +59,19 @@
     "logout": "Log out",
     "changeLanguage": "Change Language",
     "notifications": "Notifications",
-    "about": "About"
+    "about": "About",
+    "editProfile": "Edit Profile",
+    "preferences": "Preferences",
+    "security": "Security",
+    "jobsPosted": "Jobs Posted",
+    "candidatesReviewed": "Candidates Reviewed",
+    "interviewsConducted": "Interviews",
+    "successfulHires": "Successful Hires",
+    "thisWeek": "this week",
+    "thisMonth": "this month",
+    "updatePersonalInfo": "Update your personal information",
+    "customizeExperience": "Customize your experience",
+    "passwordAuth": "Password and authentication"
   },
   "applicants": {
     "title": "Applicants",

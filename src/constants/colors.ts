@@ -43,27 +43,31 @@ export const Colors = {
     900: '#111827',
   },
   // Colores semánticos
-  background: '#F0F4FA',
+  background: '#F8FAFC',
   surface: '#FFFFFF',
   surfaceElevated: '#FFFFFF',
-  textPrimary: '#111827',
+  textPrimary: '#1F2937',
   textSecondary: '#6B7280',
   textDisabled: '#9CA3AF',
-  border: '#E5E7EB',
-  divider: '#F3F4F6',
+  border: '#E2E8F0',
+  divider: '#F1F5F9',
+  statsBackground: '#F1F5F9',
+  navy: '#1A1F36',
+  accentBlue: '#3B82F6',
   // Estados
-  success: '#16A34A',
-  successLight: '#DCFCE7',
-  warning: '#D97706',
+  success: '#10B981',
+  successLight: '#D1FAE5',
+  warning: '#F59E0B',
   warningLight: '#FEF3C7',
-  error: '#DC2626',
+  error: '#EF4444',
   errorLight: '#FEE2E2',
-  info: '#2563EB',
+  info: '#3B82F6',
   infoLight: '#DBEAFE',
   // Constantes
   white: '#FFFFFF',
   black: '#000000',
   transparent: 'transparent',
 } as const;
+
 
 export type ColorKey = keyof typeof Colors;
