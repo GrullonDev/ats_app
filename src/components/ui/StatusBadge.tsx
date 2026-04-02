@@ -18,6 +18,7 @@ type BadgeVariant =
   | 'draft' 
   | 'hired' 
   | 'rejected'
+  | 'review'
   | 'screening'
   | 'applied'
   | 'psychometric_test'
@@ -31,6 +32,7 @@ type BadgeVariant =
   | 'awaiting_review'
   | 'offer_pending'
   | 'stalled';
+
 
 interface BadgeProps {
   label: string;
@@ -49,6 +51,7 @@ const BADGE_STYLES: Record<BadgeVariant, { bg: string; text: string }> = {
   draft: { bg: Colors.gray[100], text: Colors.gray[500] },
   hired: { bg: Colors.accent.greenLight, text: Colors.accent.green },
   rejected: { bg: Colors.accent.redLight, text: Colors.accent.red },
+  review: { bg: Colors.gray[200], text: Colors.gray[600] },
   screening: { bg: Colors.accent.purpleLight, text: Colors.accent.purple },
   applied: { bg: Colors.gray[200], text: Colors.gray[600] },
   psychometric_test: { bg: Colors.accent.orangeLight, text: Colors.accent.orange },
@@ -62,6 +65,7 @@ const BADGE_STYLES: Record<BadgeVariant, { bg: string; text: string }> = {
   awaiting_review: { bg: Colors.accent.purpleLight, text: Colors.accent.purple },
   offer_pending: { bg: Colors.accent.blueLight, text: Colors.accent.blue },
   stalled: { bg: Colors.gray[200], text: Colors.gray[700] },
+
 };
 
 /**

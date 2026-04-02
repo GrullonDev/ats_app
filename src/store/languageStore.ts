@@ -2,13 +2,8 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { changeLanguage, getCurrentLocale } from '@i18n/index';
-import type { SupportedLanguage } from '@types';
+import type { SupportedLanguage } from '@/types';
 
-const customStorage = {
-  setItem: (name: string, value: string) => AsyncStorage.setItem(name, value),
-  getItem: (name: string) => AsyncStorage.getItem(name),
-  removeItem: (name: string) => AsyncStorage.removeItem(name),
-};
 
 interface LanguageState {
   /** Idioma activo de la aplicación */
@@ -33,7 +28,8 @@ export const useLanguageStore = create<LanguageState>()(
     }),
     {
       name: 'language-storage',
-      storage: createJSONStorage(() => customStorage),
+      storage: createJSONStorage(() => AsyncStorage),
+
       onRehydrateStorage: () => (state) => {
         if (state) {
           changeLanguage(state.locale);

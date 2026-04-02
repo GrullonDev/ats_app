@@ -1,7 +1,11 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+<<<<<<< HEAD
 import { Platform, View, StyleSheet } from 'react-native';
+=======
+import { Platform } from 'react-native';
+>>>>>>> main
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Colors, Typography } from '@constants/index';
@@ -14,6 +18,7 @@ import { useTranslation } from '@hooks/useTranslation';
 export default function TabsLayout() {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
+<<<<<<< HEAD
 
   return (
     <View style={styles.container}>
@@ -52,14 +57,51 @@ export default function TabsLayout() {
         }}
       >
       {/* Home / Inicio */}
+=======
+
+  // Calcular altura y padding dinámico según insets del dispositivo
+  // iOS con gestos suele tener bottom > 0. Android con botones suele tener bottom = 0 o pequeño.
+  const tabHeight = 60 + Math.max(insets.bottom, 10);
+  const paddingBottom = Math.max(insets.bottom, 12);
+
+  return (
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: Colors.accentBlue,
+        tabBarInactiveTintColor: Colors.gray[400],
+        tabBarStyle: {
+          backgroundColor: Colors.surface,
+          borderTopColor: Colors.border,
+          borderTopWidth: 1,
+          height: tabHeight,
+          paddingBottom: paddingBottom,
+          paddingTop: 8,
+          // Evitar que la barra flote si hay botones nativos
+          elevation: 0,
+          borderBottomWidth: 0,
+        },
+        tabBarLabelStyle: {
+          fontSize: Typography.fontSize.xs,
+          fontWeight: Typography.fontWeight.medium,
+        },
+      }}
+    >
+      {/* Dashboard / Inicio */}
+>>>>>>> main
       <Tabs.Screen
         name="index"
         options={{
           title: t('tabs.dashboard'),
+<<<<<<< HEAD
           tabBarIcon: ({ color, size, focused }) => (
             <View style={focused && styles.activeTabIcon}>
               <Ionicons name={focused ? "home" : "home-outline"} size={22} color={color} />
             </View>
+=======
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
+            <Ionicons name="grid-outline" size={size} color={color} />
+>>>>>>> main
           ),
         }}
       />
@@ -69,10 +111,15 @@ export default function TabsLayout() {
         name="applicants"
         options={{
           title: t('tabs.applicants'),
+<<<<<<< HEAD
           tabBarIcon: ({ color, size, focused }) => (
             <View style={focused && styles.activeTabIcon}>
               <Ionicons name={focused ? "people" : "people-outline"} size={22} color={color} />
             </View>
+=======
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
+            <Ionicons name="people-outline" size={size} color={color} />
+>>>>>>> main
           ),
         }}
       />
@@ -82,10 +129,15 @@ export default function TabsLayout() {
         name="calendar"
         options={{
           title: t('tabs.calendar'),
+<<<<<<< HEAD
           tabBarIcon: ({ color, size, focused }) => (
             <View style={focused && styles.activeTabIcon}>
               <Ionicons name={focused ? "calendar" : "calendar-outline"} size={22} color={color} />
             </View>
+=======
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
+            <Ionicons name="calendar-outline" size={size} color={color} />
+>>>>>>> main
           ),
         }}
       />
@@ -95,10 +147,15 @@ export default function TabsLayout() {
         name="profile"
         options={{
           title: t('tabs.profile'),
+<<<<<<< HEAD
           tabBarIcon: ({ color, size, focused }) => (
             <View style={focused && styles.activeTabIcon}>
               <Ionicons name={focused ? "person" : "person-outline"} size={22} color={color} />
             </View>
+=======
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
+            <Ionicons name="person-outline" size={size} color={color} />
+>>>>>>> main
           ),
         }}
       />

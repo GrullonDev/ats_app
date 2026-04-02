@@ -26,10 +26,13 @@
     "hoursAgoShort": "{{count}}h",
     "daysAgoShort": "{{count}}d",
     "greeting": "¡Bienvenido de vuelta!",
-    "appFooter": "Panel de Reclutamiento • Hecho con ❤️"
+    "appFooter": "Panel de Reclutamiento • Hecho con ❤️",
+    "noResults": "No se encontraron resultados",
+    "clearFilters": "Limpiar filtros"
   },
   "welcome": {
-    "hello": "Hola",
+    "greeting": "BIENVENIDO DE VUELTA",
+    "hello": "Hola,",
     "searchPlaceholder": "Buscar vacantes...",
     "activeJobs": "Empleos Activos",
     "applicants": "Aplicantes",
@@ -83,7 +86,8 @@
       "applicants": "aplicantes",
       "newToday": "nuevos hoy",
       "scheduled": "programados"
-    }
+    },
+    "notificationAlert": "• Elena Beltrán aplicó para Senior UI/UX Designer\n• 3 entrevistas programadas para hoy"
   },
   "jobStatus": {
     "active": "ACTIVO",
@@ -114,7 +118,8 @@
     "identity": {
       "editBtn": "Editar Perfil",
       "role": "Recruiter Senior",
-      "team": "Equipo de Reclutamiento"
+      "team": "Equipo de Reclutamiento",
+      "department": "Departamento"
     },
     "stats": {
       "jobsPosted": "Vacantes",
@@ -160,7 +165,24 @@
     "languages": {
       "en": "English (US)",
       "es": "Español (LATAM)"
-    }
+    },
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "updatePersonalInfo": "Actualiza tu información personal",
+    "customizeExperience": "Personaliza tu experiencia",
+    "passwordAuth": "Contraseña y autenticación",
+    "personalInfo": "Información Personal",
+    "accountSettings": "Ajustes de Cuenta",
+    "appSettings": "Ajustes de Aplicación",
+    "helpAndSupport": "Ayuda y Soporte",
+    "aboutApp": "Acerca de la App",
+    "saveChanges": "Guardar Cambios",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "jobTitle": "Cargo",
+    "notificationsEnabled": "Notificaciones habilitadas",
+    "darkMode": "Modo Oscuro",
+    "securityDesc": "Gestiona tu contraseña y seguridad"
   },
   "applicants": {
     "title": "Candidatos",
@@ -241,7 +263,25 @@
     "emailAddress": "Correo electrónico",
     "phoneNumber": "Teléfono",
     "location": "Ubicación actual",
-    "download": "Descargar"
+    "download": "Descargar",
+    "candidatesCount": "{{count}} candidatos en todas las posiciones",
+    "metrics": {
+      "total": "Total",
+      "new": "Nuevos",
+      "interview": "Entrevista",
+      "hired": "Contratados"
+    },
+    "status": {
+      "new": "NUEVO",
+      "review": "REVISIÓN",
+      "screening": "REVISIÓN",
+      "interviewing": "ENTREVISTA",
+      "offered": "OFERTA",
+      "hired": "CONTRATADO",
+      "rejected": "RECHAZADO"
+    },
+    "fullNamePlaceholder": "Nombre completo",
+    "selectPosition": "Seleccionar posición"
   },
   "calendar": {
     "title": "Calendario de Entrevistas",
@@ -273,7 +313,26 @@
     "technicalInterview": "Entrevista Técnica",
     "videoCall": "Videollamada",
     "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-    "days": ["DOM", "LUN", "MAR", "MIE", "JUE", "VIE", "SAB"]
+    "days": ["DOM", "LUN", "MAR", "MIE", "JUE", "VIE", "SAB"],
+    "noEvents": "No hay entrevistas programadas para este día",
+    "addEvent": "Programar Entrevista",
+    "interviews": "entrevistas",
+    "interview": "entrevista",
+    "viewDay": "Día",
+    "viewWeek": "Semana",
+    "viewMonth": "Mes",
+    "interviewTypes": {
+      "technical": "Entrevista Técnica",
+      "hr": "Entrevista RRHH",
+      "video": "Video Llamada",
+      "onsite": "Entrevista Presencial"
+    },
+    "actions": {
+      "join": "Unirse a Llamada",
+      "reschedule": "Reprogramar",
+      "joiningCall": "Conectándose a la videollamada...",
+      "rescheduleSent": "Se ha enviado la solicitud de reprogramación al candidato."
+    }
   },
   "jobs": {
     "title": "Vacantes",

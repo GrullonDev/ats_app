@@ -3,11 +3,6 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { User } from '../types';
 
-const customStorage = {
-  setItem: (name: string, value: string) => AsyncStorage.setItem(name, value),
-  getItem: (name: string) => AsyncStorage.getItem(name),
-  removeItem: (name: string) => AsyncStorage.removeItem(name),
-};
 
 interface AuthState {
   /** Usuario autenticado actualmente */
@@ -60,7 +55,8 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: 'auth-storage',
-      storage: createJSONStorage(() => customStorage),
+      storage: createJSONStorage(() => AsyncStorage),
+
       onRehydrateStorage: () => (state) => {
         state?.setHydrated(true);
       },

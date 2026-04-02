@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import type { Job, Applicant, DashboardStats } from '@types/index';
+import type { Job, Applicant, DashboardStats } from '../types';
+import { MOCK_JOBS, MOCK_STATS } from '@utils/mockData';
 
 interface ATSState {
   // Dashboard
@@ -19,13 +20,8 @@ interface ATSState {
  * Store principal con datos del ATS (vacantes, aplicantes, estadísticas).
  */
 export const useATSStore = create<ATSState>((set) => ({
-  stats: {
-    activeJobs: 12,
-    totalApplicants: 245,
-    hiredThisMonth: 8,
-    applicantsGrowthPercent: 12,
-  },
-  activeJobs: [],
+  stats: MOCK_STATS,
+  activeJobs: MOCK_JOBS,
   recentApplicants: [],
   isLoadingDashboard: false,
 
@@ -34,3 +30,4 @@ export const useATSStore = create<ATSState>((set) => ({
   setRecentApplicants: (applicants) => set({ recentApplicants: applicants }),
   setLoadingDashboard: (loading) => set({ isLoadingDashboard: loading }),
 }));
+

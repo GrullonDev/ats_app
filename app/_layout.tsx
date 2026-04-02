@@ -22,10 +22,10 @@ export default function RootLayout() {
     // Esperar a que el store se cargue (hidratación)
     if (!isHydrated) return;
 
-    // Pequeño retardo para asegurar que el Root Layout y su Stack estén montados
-    const redirectTimeout = setTimeout(() => {
-      const inAuthGroup = segments[0] === '(tabs)';
+    const inAuthGroup = segments[0] === '(tabs)';
 
+    // Ejecutar navegación en el siguiente ciclo del loop para evitar errores de montaje
+    const redirectTimeout = setTimeout(() => {
       // Si no está autenticado y trata de entrar a las pestañas, ir a login
       if (!isAuthenticated && inAuthGroup) {
         router.replace('/login');

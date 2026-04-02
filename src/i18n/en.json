@@ -26,10 +26,13 @@
     "hoursAgoShort": "{{count}}h",
     "daysAgoShort": "{{count}}d",
     "greeting": "Welcome back!",
-    "appFooter": "Recruitment Dashboard • Made with ❤️"
+    "appFooter": "Recruitment Dashboard • Made with ❤️",
+    "noResults": "No results found",
+    "clearFilters": "Clear filters"
   },
   "welcome": {
-    "hello": "Hello",
+    "greeting": "WELCOME BACK",
+    "hello": "Hello,",
     "searchPlaceholder": "Search job openings...",
     "activeJobs": "Active Jobs",
     "applicants": "Applicants",
@@ -83,7 +86,8 @@
       "applicants": "applicants",
       "newToday": "new today",
       "scheduled": "scheduled"
-    }
+    },
+    "notificationAlert": "• Elena Beltrán applied for Senior UI/UX Designer\n• 3 interviews scheduled for today"
   },
   "jobStatus": {
     "active": "ACTIVE",
@@ -114,7 +118,8 @@
     "identity": {
       "editBtn": "Edit Profile",
       "role": "Senior Recruiter",
-      "team": "Recruitment Team"
+      "team": "Recruitment Team",
+      "department": "Department"
     },
     "stats": {
       "jobsPosted": "Jobs Posted",
@@ -160,7 +165,24 @@
     "languages": {
       "en": "English (US)",
       "es": "Español (LATAM)"
-    }
+    },
+    "email": "Email",
+    "phone": "Phone",
+    "updatePersonalInfo": "Update your personal information",
+    "customizeExperience": "Customize your experience",
+    "passwordAuth": "Password and authentication",
+    "personalInfo": "Personal Information",
+    "accountSettings": "Account Settings",
+    "appSettings": "App Settings",
+    "helpAndSupport": "Help & Support",
+    "aboutApp": "About App",
+    "saveChanges": "Save Changes",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "jobTitle": "Job Title",
+    "notificationsEnabled": "Notifications enabled",
+    "darkMode": "Dark Mode",
+    "securityDesc": "Manage your password and security"
   },
   "applicants": {
     "title": "Candidates",
@@ -241,7 +263,25 @@
     "emailAddress": "Email Address",
     "phoneNumber": "Phone Number",
     "location": "Current Location",
-    "download": "Download"
+    "download": "Download",
+    "candidatesCount": "{{count}} candidates across all positions",
+    "metrics": {
+      "total": "Total",
+      "new": "New",
+      "interview": "Interview",
+      "hired": "Hired"
+    },
+    "status": {
+      "new": "NEW",
+      "review": "REVIEW",
+      "screening": "SCREENING",
+      "interviewing": "INTERVIEW",
+      "offered": "OFFERED",
+      "hired": "HIRED",
+      "rejected": "REJECTED"
+    },
+    "fullNamePlaceholder": "Full Name",
+    "selectPosition": "Select position"
   },
   "calendar": {
     "title": "Interview Calendar",
@@ -273,7 +313,26 @@
     "technicalInterview": "Technical Interview",
     "videoCall": "Video Call",
     "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-    "days": ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    "days": ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+    "noEvents": "No interviews scheduled for this day",
+    "addEvent": "Schedule Interview",
+    "interviews": "interviews",
+    "interview": "interview",
+    "viewDay": "Day",
+    "viewWeek": "Week",
+    "viewMonth": "Month",
+    "interviewTypes": {
+      "technical": "Technical Interview",
+      "hr": "HR Interview",
+      "video": "Video Call",
+      "onsite": "Onsite Interview"
+    },
+    "actions": {
+      "join": "Join Meeting",
+      "reschedule": "Reschedule",
+      "joiningCall": "Connecting to the meeting...",
+      "rescheduleSent": "Reschedule request has been sent to the candidate."
+    }
   },
   "jobs": {
     "title": "Jobs",

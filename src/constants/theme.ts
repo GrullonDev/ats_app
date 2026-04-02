@@ -69,6 +69,8 @@ export const BorderRadius = {
   lg: moderateScale(12),
   xl: moderateScale(16),
   '2xl': moderateScale(20),
+  '3xl': moderateScale(24),
+
   full: 9999,
 } as const;
 
